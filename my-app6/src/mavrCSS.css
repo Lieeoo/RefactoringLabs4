@@ -1,0 +1,194 @@
+/* Изображения */
+
+
+/* Изменения цвета шрифтов (не знаю, почему не работает через js сразу) */
+.hello{
+	color: #4e4e7e;
+	font-size: 3.5vh;
+}
+.profileName{
+	color: #4e4e7e;
+	font-size: 2vh;
+}
+
+/* База страниц */
+.page {
+	background-Image: url(./images/background.png);
+	background-Position: center;
+	background-Repeat: repeat;
+	
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	align-items: center;
+	justify-content: center;
+	
+	font-family: emoji;
+	text-align: center;
+}
+.mavr{
+	display: flex;
+	min-height: 89.5vh;
+	align-items: flex-start;
+	justify-content: center;
+	margin-top: 2vh;
+}
+.workspace{
+	border-radius: 2vh;
+	border: 0.5vh solid #8ccba1;
+	background-color: #eef6f6;
+}
+
+/* Логин */
+.login-space {
+	height: auto;
+	width: 40vh;
+}
+.login-input {
+	border-radius: 2vh;
+	border: 0.3vh solid #4e4e7e;
+	color: #4e4e7e;
+	
+	text-align: center;
+	font-size: 2vh;
+	
+	margin-bottom: 1vh;
+}
+.login-button{
+	border-radius: 2vh;
+	border: 0.3vh solid #4e4e7e;
+	background-color: #4e4e7e;
+	
+	color: #eef6f6;
+	font-size: 2vh;
+	
+	margin-bottom: 1vh;
+
+	width: 13vh;
+}
+
+/* Верхнняя панель навигации */
+.top-panel {
+	background-color: white;
+	border: 0.25vh solid #8ccba1;
+	
+	display: flex;
+	justify-content: center;
+	align-items: stretch;
+	
+	height: 8vh;
+	width: 202vh;
+}
+.topbutton {
+	background: #d9e8f0;
+	border: 1px solid #d9e8f0;
+	
+	margin-left: 0.5vh;
+	margin-right: 0.5vh;
+	
+	font-size: 2vh;
+	color: #4e4e7e;
+	
+	width: 18vh;
+	height: 8vh;
+}
+.topbutton-page {
+	background: #8ccba1;
+	border: 0.2vh solid #8ccba1;
+	
+	font-size: 2vh;
+	flex-direction: column;
+	color:#4e4e7e;
+	
+	margin-left: 0.5vh;
+	margin-right: 0.5vh;
+	padding-top: 1.5vh;
+	
+	width: 18.5vh;
+	height: 12vh;
+}
+
+/* Боковая панель навигации */
+
+.leftPanel{
+	font-size: 20px;
+	background: #bcf3bd;
+	width:210px;
+	position: relative;
+	margin-top: 15px;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	margin-bottom: 15px;
+	text-align: center;
+	border-radius: 1vh;
+	border: 0px;
+	border-radius: 2vh;
+	border: 0.5vh solid #8ccba1;
+	font-family: emoji;
+}
+
+/* Профиль */
+.profile-space {
+	height: 40vh;
+	width: 78vh;
+}
+.profile-info {
+	display: flex;
+	justify-content: space-evenly;
+}
+.profile-button{
+	margin-top: 1.5vh;
+	background: transparent;
+	border: 0;
+}
+.profile-button2{
+	background-Repeat: no-repeat;
+	height: 40px;
+	width: 40px;
+}
+.infobar{
+	border: 0.3vh solid #D4E4EF;
+	border-radius: 2vh;
+	
+	height: 25vh;
+	width: 35vh;
+	
+	font-size: 1.7vh;
+}
+
+/* Классное руководство */
+.workspaceClassWork{
+	border-radius: 2vh;
+	border: 0.5vh solid #8ccba1;
+	background-color: #eef6f6;
+	width: 157vh;
+	margin-bottom:30px;
+	padding: 20px;
+	min-height: 100vh;
+	display:flex;
+}
+.workspaceClassWorkFlexColumn{
+	border-radius: 2vh;
+	border: 0.5vh solid #8ccba1;
+	background-color: #eef6f6;
+	width: 157vh;
+	margin-bottom:30px;
+	padding: 20px;
+	min-height: 100vh;
+	display:flex;
+	flex-direction:column;
+}
+/* Воспитательная работа */
+.workspaceVospWork{
+	border-radius: 2vh;
+	border: 0.5vh solid #8ccba1;
+	background-color: #eef6f6;
+	width: 157vh;
+	margin-bottom:30px;
+	padding: 20px;
+	min-height: 100vh;
+	display:flex;
+	white-space: pre-wrap;
+}
+/* */
+/* */

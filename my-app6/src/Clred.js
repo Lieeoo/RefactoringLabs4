@@ -1,6 +1,6 @@
 import './ProjectCSS.css';
 
-import TopPanel from "./TopPanel.js";
+import {TopPanel} from "./Panels.js";
 
 function Page() {
 	return (
@@ -22,34 +22,18 @@ function Page() {
 											<div className="ListPrTextRed">Образовательный уровень родителей:<input type="text" value="высшее"></input></div>
 											<div className="ListPrTextRed">Занятость родителей:<input type="text" value="ИП"></input></div>
 										</div>
-										<div className="VRredBox2">
+										<div className="TextBox2">
 											<div className="TextBox3">
-												<div className="TextBox4">
-												учреждение
-												</div>
-												<div className="TextBox4">
-												направление
-												</div>
-												<div className="TextBox4">
-												программа
-												</div>
-												<div className="TextBox4">
-												ПФДО
-												</div>
+												<div className="TextBox4">учреждение</div>
+												<div className="TextBox4">МБОУ "СОШ №11"</div>
 											</div>
 											<div className="TextBox3">
-												<div className="TextBox4">
-												МБОУ "СОШ №11"
-												</div>
-												<div className="TextBox4">
-												техническое
-												</div>
-												<div className="TextBox4">
-												"фиксики"
-												</div>
-												<div className="TextBox4">
-												785735572
-												</div>
+												<div className="TextBox4">направление</div>
+												<div className="TextBox4">техническое</div>
+											</div>
+											<div className="TextBox3">
+												<div className="TextBox4">программа</div>
+												<div className="TextBox4">"фиксики"</div>
 											</div>
 										</div>
 										<a href="Test"> 

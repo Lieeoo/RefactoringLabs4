@@ -2,42 +2,54 @@
 .App {
 	text-align: center;
 	background-color: #EEF6F6;
-	height: 100vh;
 	font-size: 22px;
 	display: flex;
+	min-height: 100vh;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
 .pages {
 	background-color: #D4E4EF;
-	height: 100vh;
-	
+	min-height: 100vh;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+}
+.normFlex {
+	margin-left:auto;
+	margin-right:auto;
 }
 /* Верхняя панель на странице */
 .topPanel {
 	background-color: #EEF6F6;
 	border: 0.5px solid #D4E4EF;
-	
 	height: 8vh;
 	width: 210vh;
 }
 .topButtons{
 	background: #D4E4EF;
 	border: 1px solid #D4E4EF;
-	
 	font-size: 2vh;
-	
 	flex-direction: column;
-	
 	margin-left: 0.5vh;
 	margin-right: 0.5vh;
-	
+	width: 18vh;
+	border-radius: 1vh;
+	height: 7vh;
+	padding-top: 5px;
+}
+.topButtons2{
+	background: #edf4ff;
+	border: 1px solid #D4E4EF;
+	font-size: 2vh;
+	flex-direction: column;
+	margin-left: 0.5vh;
+	margin-right: 0.5vh;
+	border-radius: 1vh;
 	width: 19vh;
-	height: 5.5vh;
+	height: 13vh;
+	padding-top: 5px;
 }
 .icon {
 	height: 35px;
@@ -226,122 +238,158 @@
 /*Тест*/
 .Test{
 	font-size: 20px;
-	width: 185vh;
-	height: 85vh;
 	position: relative;
-	margin-left:auto;
-	right: 25px;
-	top: 20px; 
+	display:flex;
+	justify-content: center;
+	margin-top:20px;
+	
 }
 .Blockk{
 	font-size: 20px;
+	background: #eef6f6;
+	max-width: 157vh;
+	width: 157vh;
+	margin-bottom:30px;
+	padding: 20px;
+	min-height: 100vh;
+	display:flex;
+	border-radius: 3vh;
+}
+.Blockk3{
+	font-size: 20px;
 	text-align: left;
 	background: #edf4ff;
-	width: 157vh;
-	height: 85vh;	
-	margin-left:auto;
-	margin-bottom:auto;
+	width: 157vh;	
+	min-height: 100vh;
 }
 .ClCl{
 	font-size: 20px;
 	width: 200px;
-	height: 578px;
-	position: absolute;
-	top: 15px;
+	position: relative;
+	margin-top:15px;
+	overflow: hidden;
+	display:flex;
+	flex-direction: column;
 }
 .ClyCl{
 	font-size: 20px;
 	background: #edf4ff;
-	width:200px;
-	height: 5vh;
+	width:210px;
 	position: relative;
-	top: 15px;
+	margin-top: 15px;
+	padding-top: 7px;
+	padding-bottom: 7px;
 	margin-bottom: 15px;
 	text-align: center;
+	border-radius: 1vh;
+	border: 0px;
 }
 .ClnCl{
 	font-size: 20px;
 	background: #ACC8D2;
-	width:200px;
-	height: 5vh;
+	width:210px;
 	position: relative;
-	top: 15px;
+	margin-top: 15px;
+	padding-top: 7px;
+	padding-bottom: 7px;
 	margin-bottom: 15px;
 	text-align: center;
+	border-radius: 1vh;
+	border: 0px;
 }
 .St{
 	font-size: 15px;
-	background: #ACC8D2;
-	width: 550px;
-	height: 550px;	
-	position: absolute;
-	right: 30px;
-	top: 30px;
+	background: #eef6f6;
+	width: 550px;	
+	position: relative;
 	text-align: center;
+	padding: 10px;
+	border-radius: 3vh;
+	border: 2px solid #4e4e7e;
+}
+.SetSPClass{
+	margin-left: auto;
 }
 .ListSt{
 	font-size: 20px;
-	width: 300px;
-	height: 500px;
-	position: absolute;
-	right: 790px;
+	text-align: left;
+	position: relative;
+}
+.ListSt2{
+	font-size: 20px;
+	position: relative;
+	display: flex;
 }
 .TextBox{
 	font-size: 15px;
 	width: 500px;
-	height: 180px;
 	margin-left: 20px;
+	margin-bottom: 20px;
 	text-align: left;
+	display: flex;
 }
 .TextBox2{
 	font-size: 10px;
-	background: #D4E4EF;
+	background: #eef6f6;
 	width: 500px;
-	height: 150px;
 	margin-left: 20px;
 	text-align: left;
+	display: flex;
+	border-radius: 2vh;
+	border: 2px solid #4e4e7e;
 }
 .TextBox3{
 	font-size: 10px;
-	width: 500px;
-	height: 30px;
 	margin-left: 15px;
-	margin-right: 15px;
+	margin-top: 10px;
 }
 .TextBox4{
 	font-size: 10px;
-	width: 90px;
-	height: 30px;
 	margin-left: 15px;
 	margin-right: 15px;
 	text-align: center;
-	float: left;
+	margin-bottom: 15px;
+}
+.TextBox5{
+	font-size: 15px;
+	width: 500px;
+	margin-left: 20px;
+	margin-bottom: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.btnNewSt{
+	background: #ACC8D2;
+	font-size: 15px;
+	position: relative;
+	text-align: center;
 }
 .TextStyleY{
 	font-size: 17px;
-	color: #830000;
-	width: 300px;
-	height: 10px;
-	margin-top: 20px;
-	margin-bottom: 20px;
+	color: #000000;
+	font-weight: bold;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 .TextStyleN{
+	color: #000000;
 	font-size: 17px;
-	width: 300px;
-	height: 10px;
-	margin-top: 20px;
-	margin-bottom: 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 /*Воспитательная работа, воспитательные события*/
 .ClyClVR{
 	font-size: 14px;
 	background: #edf4ff;
-	width:200px;
+	width:210px;
 	height: 5vh;
 	position: relative;
 	top: 15px;
 	margin-bottom: 15px;
 	text-align: center;
+	border-radius: 1vh;
+	
 }
 .ClnClVR{
 	font-size: 14px;
@@ -352,26 +400,27 @@
 	top: 15px;
 	margin-bottom: 15px;
 	text-align: center;
+	border: 0px;
 }
 .Fl{
 	font-size: 20px;
-	background: #ACC8D2;
-	width: 300px;
-	height: 550px;	
-	position: absolute;
-	right: 30px;
-	top: 30px;
-	text-align: left;
-	padding-left: 6px;	
+	background: #8ccba1;
+	position: relative;
+	padding-top: 10px;
+	padding-left: 20px;
+	padding-right: 6px;
+	padding-bottom: 10px;
+	border-radius: 3vh;
+	border: 1px solid #495b87;
+}
+
+.FlRight{
+	margin-left:auto;
 }
 .FlText{
-	font-size: 15px;
-	width: 300px;
-	height: 15px;	
-	top: 30px;
+	font-size: 15px;	
 	text-align: left;
 	margin-top: 5px;
-	margin-bottom: 30px;
 }
 .FlOr{
 	font-size: 15px;
@@ -380,38 +429,124 @@
 	text-align: left;
 }
 .ListPr{
-	font-size: 20px;
-	background: #ACC8D2;
-	width: 700px;
-	height: 350px;	
-	right: 30px;
-	top: 30px;
-	text-align: left;
-	padding-left: 6px;	
+	font-size: 16px;
+	background: #eef6f6;
+	width: 650px;	
+	position: relative;
+	margin-top: 10px;
+	padding: 15px;
+	border-radius: 2vh;
+	border: 2px solid #4e4e7e;
 }
 .TextStyleNVR{
-	font-size: 14px;
-	width: 300px;
-	height: 10px;
-	margin-bottom: 50px;
-}
-.ListPrText{
-	font-size: 12px;
-	width: 300px;
-	height: 10px;	
+	font-size: 16px;
 	text-align: left;
-	margin-bottom: 8px;
+	margin-left: 10px;
+	margin-bottom: 10px;
+	margin-right:80px;
+	margin-top: 10px;
+}
+.TextStyleNVR2{
+	background: #ACC8D2;
+	font-size: 14px;
+	padding: 10px;
+	border-radius: 2vh;
+	border: 1px solid #495b87;
+
+}
+.TextStyleNVR3{
+	background: #eef6f6;
+	font-size: 14px;
+	margin-left: 5px;
+	margin-right: 5px;
+	padding: 10px;
+	border-radius: 2vh;
+	border: 2px solid #4e4e7e;
+}
+.displayFlex{
+	display: flex;
+	position: relative;
+}
+.vospSobTextInProfile{
+	display: flex;
+	position: relative;
+	margin-top:6px;
+}
+.displayFlex2{
+	display: flex;
+	position: relative;
+	flex-direction:row;
+}
+.float{
+	float: left;
+	float: bottom;
+	float: right;
+	float: top;
+}
+.ucheniki2{
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	margin-top: 6px;
+}
+.clprofile2{
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: flex-start;
+	flex-wrap: wrap;
+}
+.clprofile3{
+	margin-left:auto;
+	margin-right:auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.oNormSee{
+	display: flex;
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.displayFlexColumn{
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+.displayFlexColumnNorm{
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	width: 100%;
+}
+
+.paddingLeft{
+	padding-left:10px;
+}
+.TextStyleNVR3Holder{
+	display: flex;
+	justify-content: center;
 }
 .TBVR{
 	background: #D4E4EF;
-	border: 1px solid #D4E4EF;
+	border: 1px solid #495b87;
 	flex-direction: column;
-	margin-right: 5px;
-	width: 110px;
-	height: 30px;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+	margin: 10px;
+	border-radius: 1vh;
 }
 .box{
-	margin-left:450px;
+	margin-left: 540px;
 }
 /*Воспитательная работа, воспитательные события, редактиование*/
 .ListPrTextRed{
@@ -444,10 +579,15 @@
 	background: #D4E4EF;
 	border: 1px solid #D4E4EF;
 	margin-right: 5px;
-	width: 110px;
-	height: 30px;
-	margin-top: 60px;
-	margin-left: 700px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.TBVRed2{
+	background: #f0ffff;
+	border: 1px solid #D4E4EF;
+	margin-right: 5px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 .ListBox{
 	background: #EEF6F6;
@@ -487,32 +627,71 @@
 }
 /*Отчеты*/
 .OTB{
-	width: 600px;
-	height: 100px;
 	position: relative;	
+	display: flex;
+	background: #ACC8D2;
+	border: 1px solid #495b87;
+	border-radius: 3vh;
+	margin-left: 10px;
+	margin-right: 10px;	
+}
+.OClNORMBlock{
+	font-size: 18px;
+	text-align: left;
+	margin: 20px 90px 20px 90px;
+}
+.OClNORMBlockIn{
+	text-align: left;
+}
+.OClNORMBlockInItem{
+	margin: 10px 0 10px 0;
+	display: flex;
+	width: 400px;
+}
+.OClNORMBlockInName{
+	margin-right: auto;
+}
+.ONORMVIR{
+	display:flex;
+	margin-right:auto;
+	margin-left:auto;
+}
+.OTB2{
+	position: relative;	
+	display: flex;
+	background: #ACC8D2;
+	width:300px;
+	border: 1px solid #495b87;
+	border-radius: 3vh;
+	margin-left: 10px;
+	margin-right: 10px;	
+	justify-content: space-between;
+	align-items: center;
+	flex-direction: column;
 }
 .ListPr3{
 	font-size: 20px;
-	background: #ACC8D2;
-	width: 150px;
-	height: 100px;	
-	right: 30px;
-	top: 30px;
 	text-align: left;
-	padding-left: 6px;	
-	float:left;
+	padding: 10px;	
+}
+.ListPr4{
+	font-size: 15px;
+	text-align: left;
+	padding: 10px;	
+}
+.ListPrText{
+	font-size: 20px;
+	display: flex;
 }
 .ListPrText2{
-	font-size: 12px;
-	width: 12px;
-	height: 12px;	
-	text-align: left;
+	font-size: 12px;	
+	margin-left: auto;
+	margin-top: auto;
+	margin-bottom: auto;
 }
 .MOCl{
 	background: #D4E4EF;
-	font-size: 12px;
-	width: 100px;
-	height: 50px;	
+	font-size: 12px;	
 	text-align: left;
 }
 /*Цели воспитательной работы*/
@@ -521,14 +700,39 @@
 	text-align: left;
 	background: #edf4ff;
 	width: 157vh;
-	height: 1700px;	
-	margin-left:auto;
 	margin-bottom:auto;
+	min-height: 100vh;
+	white-space: pre-wrap;
+}
+.hrEventProfile{
+	background-color:#4e4e7e;
+	background: #4e4e7e;
+	border: 1px solid #4e4e7e;
 }
 .pages2 {
 	background-color: #D4E4EF;
-	height: 100vh;
+	min-height: 100vh;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	padding-bottom: 20px;
+}
+.pr{
+	position: relative;
+	bottom:20px;
+}
+.overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+	opacity: 0.7;
+	min-height: 100%;
+	background:white;
+	position: fixed;
+}
+
+.overlay2 {
+	top:98px;
+    left:578px;
+	position: absolute;
 }
