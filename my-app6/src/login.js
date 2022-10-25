@@ -1,9 +1,11 @@
 import './mavrCSS.css';
+
 import logo from './images/icon.png'; 
 
 let port_log = "http://mavr.kemsu.ru:5500/API/user/login";
-let profile="http://mavr.kemsu.ru/profile";
-let prof = "http://localhost:3000/profile";
+
+//let profile="http://mavr.kemsu.ru/profile";
+let profile = "http://localhost:3000/profile";
 
 // <button onClick={forgot} className="Login-button2"> Забыли пароль? </button> 
 // Не знаю, нужно нам это будет или нет
@@ -13,10 +15,10 @@ function Page() {
     <div name="login" id="index_login" className="workspace">	  
 		<div className="login-space">
 			
-			<p className="hello"> Добро пожаловать в "МАВР" </p>
+			<p className="hello"> Добро пожаловать в информационную систему "МАВР" </p>
 			
 			<div>
-				<input id="login1" type="text" placeholder="логин" className="login-input"/>	
+				<input id="login1" type="text" placeholder="логин" className="login-input"/>
 				<input id="login2" type="password" placeholder="пароль" className="login-input"/>
 			</div>
 					
@@ -44,16 +46,13 @@ async function enter() {
 	},
 	body: JSON.stringify(user)
 	});
+	
 	let result = await response.json();// дада, вот этой и она тоже асинхронна
 	// в ней по идее должен быть  джейсон с токеном
 	if(response.status===200) { 
 		localStorage.setItem("token", result.token);
-		window.location.assign(prof); }
+		window.location.assign(profile); }
 	else { alert(result.message);}
-}
-
-function forgot() {
-    
 }
 
 

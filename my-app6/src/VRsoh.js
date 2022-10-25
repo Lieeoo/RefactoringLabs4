@@ -1,6 +1,6 @@
 import './ProjectCSS.css';
 
-import TopPanel from "./TopPanel.js";
+import {TopPanel} from "./Panels.js";
 
 function Page() {
 	return (

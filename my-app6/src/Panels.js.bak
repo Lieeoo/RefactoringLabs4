@@ -63,7 +63,6 @@ export function LeftPanelUS() {
 			<a href="control_users"><button id="controlUsers" className="leftPanel">Пользователи</button></a> 
 			<a href="control_classes"><button id="controlClasses" className="leftPanel">Классы</button></a>
 			<a href="control_events"><button id="controlEvents" className="leftPanel">Воспитательные события</button></a>
-			<a href="control_additional_education"><button id="controlAdditionalEducatuion" className="leftPanel">Дополнительное образование</button></a>
 			<a href="control_plans"><button id="controlPlans" className="leftPanel">Планы воспитательной работы</button></a>
 		</div>
 	);

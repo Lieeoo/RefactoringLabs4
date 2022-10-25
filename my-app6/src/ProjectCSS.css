@@ -299,13 +299,13 @@
 }
 .St{
 	font-size: 15px;
-	background: #eef6f6;
+	background: #ACC8D2;
 	width: 550px;	
 	position: relative;
 	text-align: center;
 	padding: 10px;
 	border-radius: 3vh;
-	border: 2px solid #4e4e7e;
+	border: 1px solid #495b87;
 }
 .SetSPClass{
 	margin-left: auto;
@@ -329,34 +329,30 @@
 	display: flex;
 }
 .TextBox2{
-	font-size: 10px;
-	background: #eef6f6;
-	width: 500px;
-	margin-left: 20px;
-	text-align: left;
-	display: flex;
 	border-radius: 2vh;
-	border: 2px solid #4e4e7e;
+	border: 0.2vh solid #495b87;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 .TextBox3{
-	font-size: 10px;
-	margin-left: 15px;
-	margin-top: 10px;
+	margin-left: 1vh;
+	margin-right: 1vh;
+	margin-top: 0.5vh;
+	align-items: center;
+	
+	display: flex;
+    flex-direction: column;
 }
 .TextBox4{
-	font-size: 10px;
-	margin-left: 15px;
-	margin-right: 15px;
-	text-align: center;
-	margin-bottom: 15px;
+	font-size: 1.6vh;
+	margin-bottom: 1vh;
+	float: left;
 }
 .TextBox5{
-	font-size: 15px;
-	width: 500px;
-	margin-left: 20px;
-	margin-bottom: 20px;
+	font-size: 2vh;
+	margin-bottom: 1vh;
 	display: flex;
-	align-items: center;
 	justify-content: center;
 }
 .btnNewSt{
@@ -365,19 +361,7 @@
 	position: relative;
 	text-align: center;
 }
-.TextStyleY{
-	font-size: 17px;
-	color: #000000;
-	font-weight: bold;
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
-.TextStyleN{
-	color: #000000;
-	font-size: 17px;
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
+
 /*Воспитательная работа, воспитательные события*/
 .ClyClVR{
 	font-size: 14px;
@@ -402,17 +386,6 @@
 	text-align: center;
 	border: 0px;
 }
-.Fl{
-	font-size: 20px;
-	background: #8ccba1;
-	position: relative;
-	padding-top: 10px;
-	padding-left: 20px;
-	padding-right: 6px;
-	padding-bottom: 10px;
-	border-radius: 3vh;
-	border: 1px solid #495b87;
-}
 
 .FlRight{
 	margin-left:auto;
@@ -430,21 +403,18 @@
 }
 .ListPr{
 	font-size: 16px;
-	background: #eef6f6;
+	background: #ACC8D2;
 	width: 650px;	
 	position: relative;
-	margin-top: 10px;
+	text-align: left;
 	padding: 15px;
+	float: left;
 	border-radius: 2vh;
-	border: 2px solid #4e4e7e;
+	border: 1px solid #495b87;
 }
 .TextStyleNVR{
-	font-size: 16px;
-	text-align: left;
+	font-size: 14px;
 	margin-left: 10px;
-	margin-bottom: 10px;
-	margin-right:80px;
-	margin-top: 10px;
 }
 .TextStyleNVR2{
 	background: #ACC8D2;
@@ -455,22 +425,17 @@
 
 }
 .TextStyleNVR3{
-	background: #eef6f6;
+	background: #D4E4EF;
 	font-size: 14px;
 	margin-left: 5px;
 	margin-right: 5px;
 	padding: 10px;
 	border-radius: 2vh;
-	border: 2px solid #4e4e7e;
+	border: 1px solid #495b87;
 }
 .displayFlex{
 	display: flex;
 	position: relative;
-}
-.vospSobTextInProfile{
-	display: flex;
-	position: relative;
-	margin-top:6px;
 }
 .displayFlex2{
 	display: flex;
@@ -490,7 +455,6 @@
 	justify-content: flex-start;
 	align-items: flex-start;
 	flex-wrap: wrap;
-	margin-top: 6px;
 }
 .clprofile2{
 	display: flex;
@@ -545,9 +509,7 @@
 	margin: 10px;
 	border-radius: 1vh;
 }
-.box{
-	margin-left: 540px;
-}
+
 /*Воспитательная работа, воспитательные события, редактиование*/
 .ListPrTextRed{
 	font-size: 12px;
@@ -626,28 +588,16 @@
 	margin-right: 20px;
 }
 /*Отчеты*/
-.OTB{
-	position: relative;	
-	display: flex;
-	background: #ACC8D2;
-	border: 1px solid #495b87;
-	border-radius: 3vh;
-	margin-left: 10px;
-	margin-right: 10px;	
-}
+
 .OClNORMBlock{
 	font-size: 18px;
 	text-align: left;
-	margin: 20px 90px 20px 90px;
+	padding: 3vh;
 }
 .OClNORMBlockIn{
 	text-align: left;
 }
-.OClNORMBlockInItem{
-	margin: 10px 0 10px 0;
-	display: flex;
-	width: 400px;
-}
+
 .OClNORMBlockInName{
 	margin-right: auto;
 }
@@ -683,12 +633,7 @@
 	font-size: 20px;
 	display: flex;
 }
-.ListPrText2{
-	font-size: 12px;	
-	margin-left: auto;
-	margin-top: auto;
-	margin-bottom: auto;
-}
+
 .MOCl{
 	background: #D4E4EF;
 	font-size: 12px;	
@@ -703,11 +648,6 @@
 	margin-bottom:auto;
 	min-height: 100vh;
 	white-space: pre-wrap;
-}
-.hrEventProfile{
-	background-color:#4e4e7e;
-	background: #4e4e7e;
-	border: 1px solid #4e4e7e;
 }
 .pages2 {
 	background-color: #D4E4EF;
@@ -725,9 +665,10 @@
     position: absolute;
     top: 0; left: 0;
     width: 100%;
-	opacity: 0.7;
 	min-height: 100%;
-	background:white;
+	background-Image: url(./images/background.png);
+	background-Position: center;
+	background-Repeat: repeat;
 	position: fixed;
 }
 

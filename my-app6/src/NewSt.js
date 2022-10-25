@@ -1,113 +1,134 @@
 import './ProjectCSS.css';
-import ReactDOM from 'react-dom';
 import './mavrCSS.css';
+
+import ReactDOM from 'react-dom';
 
 import {TopPanel} from "./Panels.js";
 import {NewStFa, NewStFaPol, NewStFaNepol, NewStFaOp} from "./See.js";
+
 const element = <NewStFa />;
 const element2 = <NewStFaPol />;
 const element3 = <NewStFaNepol />;
 const element4 = <NewStFaOp />;
+
 let flag = false;
 let flagFa=false;
 let flagFa2=false;
 let createStudentGroupOfRisk="нет";
-export let createStudentWhiteFamilystatus="низкий доход";
-export let createStudentWriteEducationLevelMother="высшее";
-export let createStudentWriteWorkMother="работник по найму";
-export let createStudentWriteEducationLevelFather="высшее";
-export let createStudentWriteWorkFather="работник по найму";
-export let createStudentWriteEducationLeveGuardian="высшее";
-export let createStudentWriteWorkGuardian="работник по найму";
+
 let fastatstr;
 let programDelete=0;
+
+export let fastat="низкий доход";
+export let obrurma="высшее";
+export let zanma="работник по найму";
+export let obrurfa="высшее";
+export let zanfa="работник по найму";
+export let obrurop="высшее";
+export let zanop="работник по найму";
 
 let port_reg_st = "http://mavr.kemsu.ru:5500/API/student/";
 let port_reg_cl = "http://mavr.kemsu.ru:5500/API/class/";
 let port_reg_fa = "http://mavr.kemsu.ru:5500/API/family/";
 let cl = "http://localhost:3000/classroom";
+//let cl = "http://mavr.kemsu.ru/classroom";
 let port_create_program = "http://mavr.kemsu.ru:5500/API/additEduc/";
 let port_student_to_dop = "http://mavr.kemsu.ru:5500/API/additEduc/addSTUD";
 let flst;
 
 function Page() {
-	window.onload = function() {
+		window.onload = function() {
 			enter3();
+			document.getElementById('clruk').className = "topbutton-page";
 		};
 	return (
 		<div>
 			< TopPanel />
-			<div className="Test">
-				<div className="workspaceClassWorkFlexColumn">
-				<p>Создание пользователя</p>
-				<div>
+			<div className="mavr">
+				<div className="classes-create-space">
+					<p className="profileName">Создание ученика</p>
+
 					<div className="ListSt2">
-						<div>
-							Основная информация:
-							<hr/>
-							<div className="TextStyleNVR">
-							<p>Фамилия:<input id="createStudentName" type="text"></input></p>
-							<p>ФИО:<input id="createStudentFIO" type="text" style={{width: 250}}></input></p>
-							<p>Класс:
-								<select id="clSel">
-								</select>
-							</p>
-							<p>Дата рождения:<input id="createStudentBirthday" type="date"></input></p>
-							<p>Группа риска:
-								<select onChange={e => {createStudentGroupOfRisk = e.target.value}}>
-									<option>нет</option>
-									<option>девиантное поведение</option>
-									<option>неуспеваемость</option>
-									<option>иное</option>
-								</select>
-							</p>
-							<p>Пол:
-								<select id="clSex">
-									<option value="2">м</option>
-									<option value="1">ж</option>
-								</select>
-							</p>
-							<p>Семья:<select id="createStudentFamilyStatus" onChange={e => {enter6(e.target.value)}}>
-									<option value="полная">полная</option>
-									<option value="неполная">неполная</option>
-									<option value="опекун">опекун</option>
-								</select>
-							</p>
-							<p>ПФДО:<input id="createStudentPFDO" type="text"></input></p>
-							<hr/> 
+						<div className="student-info">
+							
+							<p className="text-main"> Основная информация: <hr/> </p>
+								
+								<p>
+									Фамилия: <input id="createStudentName" type="text" className="student-input"></input>
+									ФИО: <input id="createStudentFIO" type="text" className="student-input" style={{width: 250}}></input>
+									
+								</p>
+								<p>
+									Дата рождения: <input id="createStudentBirthday" className="student-input" type="date"></input>
+									Пол:  
+									<select id="clSex" className="student-input">
+										<option value="0">м</option>
+										<option value="1">ж</option>
+									</select>
+									Класс:
+									<select id="clSel" className="student-input">
+									</select>
+								</p>
+								<p> Группа риска:
+									<select className="student-input" onChange={e => {createStudentGroupOfRisk = e.target.value}}>
+										<option>нет</option>
+										<option>девиантное поведение</option>
+										<option>неуспеваемость</option>
+										<option>иное</option>
+									</select>
+									Семья:
+									<select id="createStudentFamilyStatus" className="student-input" onChange={e => {enter6(e.target.value)}}>
+										<option value="полная">полная</option>
+										<option value="неполная">неполная</option>
+										<option value="опекун">опекун</option>
+									</select>
+								</p>
+								<p> 
+									Сертификат ПФДО:<input id="createStudentPFDO" className="student-input" type="text"></input>
+								</p>
+						</div>
+						</div>
+							<div id="pasteFa"> 
+						</div>
+						
+						<div className="ListSt2">
+						<div className="student-info">
+							<p className="text-main"> Дополнительное образование: <hr/> </p>
+							<div>
+								<div className="stud-addition">
+									<div>
+										<p> Выберите направление: 
+										<select id="listOfAdditionalEducations" className="student-input">
+											<option selected disabled></option>
+										</select>
+										</p>
+									</div>
+									<div>
+										<p>Направления учащегося: 
+										<select id="listOfAdditionalEducationsAdd" className="student-input" size="3">
+										</select>
+										</p>
+									</div>
+									
+								</div>
+							</div>
 							</div>
 						</div>
-						<div>
-						<div id="pasteFa">
-						</div>
-						<p>Дополнительное образование:</p>
-						<div>
-							<div className="displayFlex">
-								<div>
-								<select id="listOfAdditionalEducationsAdd" size="3">
-								</select>
-								</div>
-								<div>
-								<select id="listOfAdditionalEducations">
-									<option selected disabled></option>
-								</select>
-								</div>
-							</div>
-						</div>
-						<hr/>
-						</div>
-					</div>
-					</div>
-					<div>
-					<button className="TBVR" onClick={function(){enter4();}}> Автозаполнить </button>
-					<button className="TBVR" onClick={function(){enter();}}> Сохранить </button>
+							
+						<button id="container" className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enter();}}></img></button>
+						
+						<button id="container" className="profile-button"><img src="https://i.ibb.co/yBBD6GY/cancel.png"className=" profile-button2" onClick={function(){enter_exit();}}></img></button>
 					</div>
 				</div>
-			</div>
 
 		</div>
   );	
 }
+
+async function enter_exit() {
+	window.location.assign(cl);
+}
+
 //Добавление ученика в БД
 async function enter() {
 	let family2;
@@ -166,7 +187,6 @@ async function enter() {
 		result2 = await response2.json();
 		break;
 		case 3:
-		alert(3);
 		family2 = {
 		family_status:3,
 		material_condition:document.getElementById('createStudentFamilysMoney').value,
@@ -182,7 +202,6 @@ async function enter() {
 		body: JSON.stringify(family2),
 		});
 		result2 = await response2.json();
-		alert(33);
 		break;
 		case 4:
 		family2 = {
@@ -221,7 +240,6 @@ async function enter() {
 	}
 	let result3 = parseInt(JSON.stringify(result2.id));
 	//Добавление ученика
-	alert(document.getElementById('createStudentPFDO').value);
 	let student = {
 		name:document.getElementById('createStudentName').value,
 		fullname:document.getElementById('createStudentFIO').value,
@@ -242,7 +260,6 @@ async function enter() {
 		});
 	let result = await response.json();
 	let result4 = parseInt(JSON.stringify(result.id));
-	alert(JSON.stringify(result));
 	//Добавление дополнительного образования
 	let m=0;
 	while(m<document.getElementById("listOfAdditionalEducationsAdd").options.length){
@@ -263,10 +280,12 @@ async function enter() {
 	}
 	window.location.assign(cl);
 }
+
 //Функция-тест
 async function enter2() {
 	alert(document.getElementById('createStudentGroupOfRisk').value);
 }
+
 //Заполнение данных на странице
 async function enter3() {
 		let response = await fetch(port_reg_cl, {
@@ -278,11 +297,11 @@ async function enter3() {
 		});
 	let result = await response.json();
 	let i=0;
-	while(i<result.count){
-		let result2 = JSON.stringify(result.rows[i].number +  " " + result.rows[i].letter);
+	while(i<result.length){
+		let result2 = JSON.stringify(result[i].number +  " " + result[i].letter);
 		var result3 = result2.substring(1, result2.length-1);
 		let p = document.createElement('option')
-		p.value=result.rows[i].id;
+		p.value=result[i].id;
 		let txt = document.createTextNode(result3)
 		p.appendChild(txt);
 		document.getElementById('clSel').appendChild(p);
@@ -313,14 +332,15 @@ async function enter3() {
 	document.getElementById('listOfAdditionalEducationsAdd').onchange = e => {enterNewStudentDeleteProgramFromSelect(e.target.selectedIndex);};
 	document.getElementById('listOfAdditionalEducations').onchange = e => {enterControlSystemEventsThisProgram(e.target.value);};
 }
+
 //Автозаполнение полей ученика
 async function enter4() {
-	document.getElementById('createStudentName').value = "Студент";
-	document.getElementById('createStudentFIO').value = "Студент Студентович Студентов";
-	document.getElementById('createStudentBirthday').value = "2005-03-03";
-	document.getElementById('createStudentFamilyStatus').value = "полная";
+	document.getElementById('ln').value = "Студент";
+	document.getElementById('fio').value = "Студент Студентович Студентов";
+	document.getElementById('dd').value = "2005-03-03";
+	document.getElementById('fl').value = "полная";
 	flst = 1;
-	document.getElementById('createStudentPFDO').value = "88006660606";
+	document.getElementById('pfdo').value = "88006660606";
 }
 //Открытие создания семьи
 export async function enter6(a) {
@@ -342,7 +362,6 @@ export async function enter6(a) {
 }
 //Заполнение поля неполной семьи в зависимости от матери/отца-одиночки или опекуна
 export async function enter9(a) {
-	alert("flst: "+ flst);
 	switch(a) {
 		case 'ж':
 		if (flst==2||flst==3){
@@ -399,7 +418,6 @@ export async function enterControlSystemEventsThisProgram(a) {
 export async function enterNewStudentDeleteProgramFromSelect(a) {
 	document.getElementById("listOfAdditionalEducationsAdd").options[a] = null;
 }
-
 
 
 export default Page;

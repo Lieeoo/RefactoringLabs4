@@ -9,6 +9,7 @@ let port_reg_cl = "http://mavr.kemsu.ru:5500/API/class/";
 let port_find_students = "http://mavr.kemsu.ru:5500/API/student/:id";
 let port_add_students = "http://mavr.kemsu.ru:5500/API/event/stud_give";
 let port_see_napr = "http://mavr.kemsu.ru:5500/api/napravlenie";
+let port_reg_clksob = "http://mavr.kemsu.ru:5500/API/class/addEvent";
 
 let fovr=1;
 let nap;
@@ -52,6 +53,12 @@ function Page() {
 										<p>В рамках проекта:<input id="provr" type="text"></input></p>
 										<p>Сетевое взаимодействие:<input id="svvr" type="text"></input></p>
 										<p>Сертификат:<input id="revr" type="text"></input></p>
+										<p>Назначить событие классам:<select id="chooseEventClasses" size="4" onChange={e => {enternewvrChooseEventClasses(e.target.selectedIndex)}}>
+										</select>
+										<select id="eventClasses" onChange={e => {enternewvrEventClasses(e.target.value);}}>
+										<option selected disabled></option>
+										</select>
+										</p>
 										<button className="TBVR" onClick={function(){enternewvr();}}> Автозаполнить </button>
 										<button className="TBVR" onClick={function(){enternewvr2();}}> Сохранить </button> 
 									</div>
@@ -122,7 +129,6 @@ async function enternewvr2() {
 	body: JSON.stringify(vospsob),
 	});
 	let resultvr = await responsevr.json();
-	alert(JSON.stringify(resultvr));
 	//Вывод всех событий для вывода количества строк
 	let responsevrget = await fetch(port_reg_vr, {
 	method: 'GET',
@@ -134,7 +140,7 @@ async function enternewvr2() {
 	let resultvrget = await responsevrget.json();
 	//Привязка направления к событию
 	let naprksob = {
-	id:resultvrget.rows[resultvrget.count-1].id,
+	id:resultvrget[resultvrget.length-1].id,
 	napr_id:nap
 	};
 	let responsenaprksob = await fetch(port_reg_napksob, {
@@ -146,13 +152,13 @@ async function enternewvr2() {
 	body: JSON.stringify(naprksob),
 	});
 	let resultnaprksob = await responsenaprksob.json();
-	alert(JSON.stringify(resultnaprksob));
+	//alert(JSON.stringify(resultnaprksob));
 	//Привязка учеников к событию
 	let kolstr = document.getElementById("uchenvr").options.length;
 	let i=0;
 	while(i<kolstr){
 		let uchksob = {
-		id:resultvrget.rows[resultvrget.count-1].id,
+		id:resultvrget[resultvrget.length-1].id,
 		stud_id:document.getElementById("uchenvr").options[i].value
 		};
 		let responseuchksob = await fetch(port_add_students, {
@@ -164,7 +170,27 @@ async function enternewvr2() {
 		body: JSON.stringify(uchksob),
 		});
 		let resultuchksob = await responseuchksob.json();
-		alert(JSON.stringify(resultuchksob));
+		//alert(JSON.stringify(resultuchksob));
+		i++;
+	}
+	//Привязка события к классам
+	let kolstr2 = document.getElementById("chooseEventClasses").options.length;
+	i=0;
+	while(i<kolstr2){
+		let clksob = {
+		id:document.getElementById("chooseEventClasses").options[i].value,
+		event_id:resultvrget[resultvrget.length-1].id
+		};
+		let responseclksob = await fetch(port_reg_clksob, {
+		method: 'POST',
+		headers: {
+		Authorization: `Bearer ${localStorage.token}` ,
+		'Content-Type': 'application/json;charset=utf-8'
+		},
+		body: JSON.stringify(clksob),
+		});
+		let resultclksob = await responseclksob.json();
+		//alert(JSON.stringify(resultclksob));
 		i++;
 	}
 }
@@ -195,12 +221,12 @@ async function enternewvr4(a) {
 		});
 	let result = await response.json();
 	i=0;
-	while (result.rows[i].id!=a){
+	while (result[i].id!=a){
 		i++;
 	}
-	let result2 = result.rows[i].fullname;
+	let result2 = result[i].fullname;
 	let p = document.createElement('option')
-	p.value=result.rows[i].id;
+	p.value=result[i].id;
 	let txt = document.createTextNode(result2)
 	p.appendChild(txt);
 	document.getElementById('uchenvr').appendChild(p);
@@ -222,13 +248,23 @@ async function enternewvr6() {
 		});
 	let result = await response.json();
 	let i=0;
-	while(i<result.count){
-		let result2 = result.rows[i].number +  " " + result.rows[i].letter;
+	while(i<result.length){
+		let result2 = result[i].number +  " " + result[i].letter;
 		let p = document.createElement('option')
-		p.value=result.rows[i].id;
+		p.value=result[i].id;
 		let txt = document.createTextNode(result2)
 		p.appendChild(txt);
 		document.getElementById('cllivr').appendChild(p);
+		i++;
+	}
+	i=0;
+	while(i<result.length){
+		let result2 = result[i].number +  " " + result[i].letter;
+		let p = document.createElement('option')
+		p.value=result[i].id;
+		let txt = document.createTextNode(result2)
+		p.appendChild(txt);
+		document.getElementById('eventClasses').appendChild(p);
 		i++;
 	}
 	//Заполнение списка направлений
@@ -278,16 +314,50 @@ async function enternewvr7(a) {
 	p.selected = true;
 	document.getElementById('clvr').appendChild(p);
 	i=0;
-	while(i<result.count){
-		let result2 = result.rows[i].fullname;
+	while(i<result.length){
+		let result2 = result[i].fullname;
 		let p = document.createElement('option')
-		p.value=result.rows[i].id;
+		p.value=result[i].id;
 		let txt = document.createTextNode(result2)
 		p.appendChild(txt);
 		document.getElementById('clvr').appendChild(p);
 		i++;
 	}
 }
-
+//удаление классов из списка
+async function enternewvrChooseEventClasses(a) {
+	document.getElementById("chooseEventClasses").options[a] = null;
+}
+//Выбор классов
+async function enternewvrEventClasses(a) {
+	let kolstr = document.getElementById("chooseEventClasses").options.length;
+	let i=0;
+	let j=0;
+	while(i<kolstr){
+		if(document.getElementById("chooseEventClasses").options[i].value==a) j++;
+		i++;
+	}
+	if (j>0){
+		alert("Этот класс уже есть в списке!");
+	}
+	let response = await fetch(port_reg_cl, {
+		method: 'GET',
+		headers: {
+		Authorization: `Bearer ${localStorage.token}` ,
+		'Content-Type': 'application/json;charset=utf-8'
+		},
+		});
+	let result = await response.json();
+	i=0;
+	while (result[i].id!=a){
+		i++;
+	}
+	let result2 = result[i].number +  " " + result[i].letter;
+	let p = document.createElement('option')
+	p.value=result[i].id;
+	let txt = document.createTextNode(result2)
+	p.appendChild(txt);
+	document.getElementById('chooseEventClasses').appendChild(p);
+}
 
 export default Page;

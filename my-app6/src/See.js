@@ -1,41 +1,50 @@
 import './ProjectCSS.css';
-import logo from './icon.png';
-import './mavrCSS.css';
+import logo from './images/icon.png';
 
-import {enter6, enter9, createStudentWhiteFamilystatus, createStudentWriteEducationLevelMother, createStudentWriteWorkMother, createStudentWriteEducationLevelFather, createStudentWriteWorkFather, createStudentWriteEducationLeveGuardian, createStudentWriteWorkGuardian} from "./NewSt.js";
+import {enter6, enter9, fastat, obrurma, zanma, obrurfa, zanfa, obrurop, zanop} from "./NewSt.js";
 import {enter10} from "./Classroom.js";
-import {entervr} from "./VR.js";
-import {enternewcl, enternewcl2, enterus2, enterus3} from "./US.js";
-import {enterControlSystemEvents,enterControlSystemEventsShowDirections, directionDelete,enterControlSystemEventsDeleteDirections,enterControlSystemEventsDeleteOrganizations,enterControlSystemEventsThisDirection,enterControlSystemEventsDeleteDirectionFromSelect,enterControlSystemEventsCreateProgram,programDelete,enterControlSystemEventsDeletePrograms} from "./ControlSystemEvents.js";
+import {entervr} from "./EducationalWork.js";
+import {enterControlSystemUsers, enterControlSystemUsersClassToUser, enterControlSystemUsersCreateUser, enternewcl, enternewcl2, enterus3} from "./Control.js";
+import {enterControlSystemClassesDelete, enterControlSystemClasses} from "./ControlSystemClasses.js";
+import {enterControlSystemPlans} from "./ControlSystemPlans.js";
+import {enterGoalsShowClasses, enterGoalsChangeClass} from "./Goals.js";
+import {enterControlSystemAddEducation,enterControlSystemAddEducationShowDirections, directionDelete,enterControlSystemAddEducationDeleteDirections,enterControlSystemAddEducationDeleteOrganizations,enterControlSystemAddEducationThisDirection,enterControlSystemAddEducationDeleteDirectionFromSelect,enterControlSystemAddEducationCreateProgram,programDelete,enterControlSystemAddEducationDeletePrograms} from "./ControlSystemAdditionalEducation.js";
+import {enterControlSystemEventCreateDirection,enterControlSystemEventDeleteDirectionFromSelect,enterControlSystemEventCreateProgram,enterControlSystemEventDeleteDirections,enterControlSystemEventDeletePrograms} from "./ControlSystemEvents.js";
+
 
 let port_log = "http://mavr.kemsu.ru:5500/API/user/login";
-let profile="http://mavr.kemsu.ru/profile";
+let profile = "http://mavr.kemsu.ru/profile";
 let prof = "http://localhost:3000/profile";
+
+let user_edit = "http://mavr.kemsu.ru:5500/API/user/whoamiredact";
 
 export function ProfileOfStudent() {
   return (
-	<div id="SP" className="St">
-		<h2 id="fio"></h2>
+	<div id="SP" className="profile-student">
+		<h2 id="fio" className="profileName"></h2>
 		<div className="TextBox5">
-			<div id="sex"></div><div>,&nbsp;</div><div>учится</div>
+			<div id="sex" className="text-info"></div>
+			<div >,&nbsp;</div>
+			<div className="text-info"> учится</div>
 		</div>
 		<hr className="hrEventProfile"/>
-			<div className="TextBox"><div>Состояние семьи:&nbsp;</div><div id="profileFamilyCondition"></div></div>
-			<div className="TextBox"><div>Детей в семье:&nbsp;</div><div>1</div></div>
-			<div className="TextBox"><div>Достаток семьи:&nbsp;</div><div id="profileFamilysMoney"></div></div>
+			<div className="student-info-text"><div>Состояние семьи:&nbsp;</div><div id="profileFamilyCondition"></div></div>
+			<div className="student-info-text"><div>Детей в семье:&nbsp;</div><div>1</div></div>
+			<div className="student-info-text"><div>Достаток семьи:&nbsp;</div><div id="profileFamilysMoney"></div></div>
 		<div>
 		<hr className="hrEventProfile"/>
-			<p id="profileInfoimationAboutParents">Информация о родителях</p>
-			<div id="profileInfoimationAboutFamily">
+			<p id="profileInfoimationAboutParents" className="text-info">Информация о родителях</p>
+			<div id="profileInfoimationAboutFamily" className="student-info-text">
 			</div>
 		</div>
 		<hr className="hrEventProfile"/>
-		<p>Дополнительное образование</p>
-		<div className="TextBox">
+		<p className="text-info">Дополнительное образование</p>
+		<div className="student-info-text">
 			<div style={{}}>Сертификат ПФДО:&nbsp;</div><div id="PFDO">785735572</div>
 		</div>
 		<div id="studentProfileSetAdditionalEducation">
 		</div>
+		<p> </p>
 		<button id="profileEdit" className="profile-button"><img src="https://i.ibb.co/9VHb7z3/edit.png" className="profile-button2"></img></button> 
 		<button id="profileDelete" className="profile-button"><img src="https://i.ibb.co/vJC86mY/trash.png" className="profile-button2"></img></button>
 		<button id="addAdditionalEducation" className="profile-button"><img src="https://i.ibb.co/Tbth16X/add.png" className="profile-button2"></img></button>
@@ -61,21 +70,17 @@ export function AdditionalEducation() {
 
 export function EvProf() {
   return (
-		<div id="EP" className="ListPr">
-			<div className="vospSobTextInProfile"><div>Дата события:&nbsp;</div><div id="profileEventDateOfEvent"></div></div>
-			<div className="vospSobTextInProfile"><div>Форма воспитательной работы:&nbsp;</div><div id="profileEventFormOfEducationalActivity"></div></div>
-			<div className="vospSobTextInProfile"><div>Кто проводит:&nbsp;</div><div id="profileEventWhoProvide"></div></div>
-			<div id="profileEventDirection" className="vospSobTextInProfile"><div>Направление:&nbsp;</div></div>
-			<div className="vospSobTextInProfile"><div>Сетевое взаимодействие:&nbsp;</div><div id="profileEventNetworkConnection"></div></div>
-			<div className="vospSobTextInProfile"><div>Проект:</div><div id="profileEventProject" className="paddingLeft"></div></div>
-			<hr className="hrEventProfile"/>
-			<div><div className="vospSobTextInProfile">Учащиеся:</div><div id="profileEventStudents" className="ucheniki2"></div></div>
-			<hr className="hrEventProfile"/>
-			<div><div className="vospSobTextInProfile">Приглашенные организации:</div><div id="profileEventInvitedOrganizations" className="vospSobTextInProfile"></div></div>
-			<hr className="hrEventProfile"/>
-			<div><div className="vospSobTextInProfile">Приглашенные родители:</div><div id="profileEventInvitedParents" className="vospSobTextInProfile"></div></div>
-			<hr className="hrEventProfile"/>
-			<div className="vospSobTextInProfile"><div>Сертификат:&nbsp;</div><div id="profileEventSertificate"></div></div>
+		<div id="EP" className="ew_event">
+			<div className="displayFlex"><div>Дата события:&nbsp;</div><div id="profileEventDateOfEvent">15.03.22</div></div>
+			<div className="displayFlex"><div>Форма воспитательной работы:&nbsp;</div><div id="profileEventFormOfEducationalActivity">урок города</div></div>
+			<div className="displayFlex"><div>Кто проводит:&nbsp;</div><div id="profileEventWhoProvide">классный руководитель</div></div>
+			<div id="profileEventDirection" className="displayFlex"><div>Направление:&nbsp;</div></div>
+			<div className="displayFlex"><div>Сетевое взаимодействие:&nbsp;</div><div id="profileEventNetworkConnection">Библиотека "Читай - город"</div></div>
+			<div className="displayFlex"><div>Проект:</div><div id="profileEventProject" className="paddingLeft">Живые уроки</div></div>
+			<div><div>Учащиеся:</div><div id="profileEventStudents" className="ucheniki2"></div></div>
+			<div><div>Приглашенные организации:</div><div id="profileEventInvitedOrganizations">орг1, орг2</div></div>
+			<div><div>Приглашенные родители:</div><div id="profileEventInvitedParents"></div></div>
+			<div className="displayFlex"><div>Сертификат:&nbsp;</div><div id="profileEventSertificate"></div></div>
 			<div className="box">
 				<a href="VRred"> 
 					<button className="profile-button"><img src="https://i.ibb.co/9VHb7z3/edit.png" className="profile-button2"></img></button> 
@@ -107,6 +112,38 @@ export function ArProf() {
   );
 }
 
+
+export function OCl() {
+  return (
+		<div className="OTB">
+			<div className="ListPr3">
+				<div className="ListPrText">Пофамильно:<input id="opof" className="ListPrText2" type="checkbox"></input></div>
+				<div className="ListPrText">Количественный:<input id="okol" className="ListPrText2" type="checkbox"></input></div>
+				<div className="ListPrText">Процентный:<input id="opr" className="ListPrText2" type="checkbox"></input></div>
+				<button id="oClb" className="TBVR"> Сформировать отчет </button> 
+			</div>
+			<div className="ListPr3">
+				<div className="ListPrText">Класс:</div>
+				<select id="oCl">
+				</select>
+			</div>
+		</div>
+  );
+}
+
+export function OVR() {
+  return (
+		<div className="OTB">
+			<div className="ListPr3">
+				<div className="ListPrText">Количественный по каждому учреждению:<input id="okolu" className="ListPrText2" type="checkbox"></input></div>
+				<div className="ListPrText">Количественный по секциям каждого учреждения:<input id="okolu" className="ListPrText2" type="checkbox"></input></div>
+				<div className="ListPrText">Количественный по секциям дополнительного образования школы:<input id="okolu" className="ListPrText2" type="checkbox"></input></div>
+				<button className="TBVR">Сформировать отчет </button>
+			</div>
+		</div>
+  );
+}
+
 export function OAS() {
   return (
 		<div className="OTB">
@@ -129,21 +166,20 @@ export function OAS() {
 
 export function NewStFa() {
   return (
-		<div>
-			Семья:
-			<hr/>
-			<div>
-				<p>Достаток семьи:
-					<select id="createStudentFamilysMoney" onChange={e => {createStudentWhiteFamilystatus = e.target.value}}>
-						<option>низкий доход</option>
-						<option>средний доход</option>
-						<option>вполне благополучная семья</option>
-					</select>
-				</p>
-				<div id="familyHolder">
+		<div className="student-info">
+				
+				<p className="text-main"> Семья: <hr/> </p>
+				<div className="family-create-space">
+					<p> Достаток семьи:
+						<select id="createStudentFamilysMoney" className="student-input" onChange={e => {fastat = e.target.value}}>
+							<option>низкий доход</option>
+							<option>средний доход</option>
+							<option>вполне благополучная семья</option>
+						</select>
+					</p>
+					<div id="familyHolder">
 				</div>
 			</div>
-			<hr/>
 		</div>
   );
 }
@@ -151,19 +187,21 @@ export function NewStFa() {
 export function NewStFaPol() {
   return (
 	<div className="TextStyleNVR3Holder">
-		<div className="TextStyleNVR3">
-			Мать:
+		<div className="family-info">
 			<div>
-				<p>Образовательный уровень:</p>
-				<select id="createStudentEducationLevelMother" onChange={e => {createStudentWriteEducationLevelMother = e.target.value}}>>
+			<p>Мать: </p>
+				<div>
+				<p>Образовательный уровень:
+				<select id="createStudentEducationLevelMother" className="student-input" onChange={e => {obrurma = e.target.value}}>>
 					<option>высшее</option>
 					<option>незаконченное высшее</option>
 					<option>средне-специальное</option>
 					<option>среднее</option>
 					<option>неполное среднее</option>
 				</select>
-				<p>Занятость:</p>
-				<select id="createStudentWorkMother" onChange={e => {createStudentWriteWorkMother = e.target.value}}>
+				</p>
+				<p>Занятость:
+				<select id="createStudentWorkMother" className="student-input" onChange={e => {zanma = e.target.value}}>
 					<option>работник по найму</option>
 					<option>предпринимательская деятельность</option>
 					<option>безработный</option>
@@ -171,21 +209,23 @@ export function NewStFaPol() {
 					<option>инвалид</option>
 					<option>пенсионер</option>
 				</select>
+				</p>
+				</div>
 			</div>
-		</div>
-		<div className="TextStyleNVR3">
-			Отец:
+		<div>
+			<p>Отец: </p>
 			<div>
-				<p>Образовательный уровень:</p>
-				<select id="createStudentEducationLevelFather" onChange={e => {createStudentWriteEducationLevelFather = e.target.value}}>
+				<p>Образовательный уровень:
+				<select id="createStudentEducationLevelFather" className="student-input" onChange={e => {obrurfa = e.target.value}}>
 					<option>высшее</option>
 					<option>незаконченное высшее</option>
 					<option>средне-специальное</option>
 					<option>среднее</option>
 					<option>неполное среднее</option>
 				</select>
-				<p>Занятость:</p>
-				<select id="createStudentWorkFather" onChange={e => {createStudentWriteWorkFather = e.target.value}}>
+				</p>
+				<p>Занятость:
+				<select id="createStudentWorkFather" className="student-input" onChange={e => {zanfa = e.target.value}}>
 					<option>работник по найму</option>
 					<option>предпринимательская деятельность</option>
 					<option>безработный</option>
@@ -193,6 +233,8 @@ export function NewStFaPol() {
 					<option>инвалид</option>
 					<option>пенсионер</option>
 				</select>
+				</p>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -202,22 +244,24 @@ export function NewStFaPol() {
 export function NewStFaNepol() {
   return (
 	<div className="TextStyleNVR3Holder">
-		<div className="TextStyleNVR3">
+		<div className="family-info">
 			<div>
-				<p>Пол:<select onChange={e => {enter9(e.target.value); alert(e.target.value);}}>
+				<p>Пол:<select id="sexNepolFa" className="student-input" onChange={e => {enter9(e.target.value)}}>
 										<option value="ж">ж</option>
 										<option value="м">м</option>
-									</select></p>
-				<p>Образовательный уровень:</p>
-				<select id="createStudentEducationLeveGuardian" onChange={e => {createStudentWriteEducationLeveGuardian = e.target.value}}>
+									</select>
+									</p>
+				<p>Образовательный уровень:
+				<select id="createStudentEducationLeveGuardian" className="student-input" onChange={e => {obrurop = e.target.value}}>
 					<option>высшее</option>
 					<option>незаконченное высшее</option>
 					<option>средне-специальное</option>
 					<option>среднее</option>
 					<option>неполное среднее</option>
 				</select>
-				<p>Занятость:</p>
-				<select id="createStudentWorkGuardian" onChange={e => {createStudentWriteWorkGuardian = e.target.value}}>
+				</p>
+				<p>Занятость:
+				<select id="createStudentWorkGuardian" className="student-input" onChange={e => {zanop = e.target.value}}>
 					<option>работник по найму</option>
 					<option>предпринимательская деятельность</option>
 					<option>безработный</option>
@@ -225,6 +269,7 @@ export function NewStFaNepol() {
 					<option>инвалид</option>
 					<option>пенсионер</option>
 				</select>
+				</p>
 			</div>
 		</div>
 	</div>
@@ -234,22 +279,23 @@ export function NewStFaNepol() {
 export function NewStFaOp() {
   return (
 	<div className="TextStyleNVR3Holder">
-		<div className="TextStyleNVR3">
+		<div className="family-info">
 			<div>
-				<p>Пол:<select onChange={e => {enter9(e.target.value)}}>
+				<p>Пол:<select className="student-input" onChange={e => {enter9(e.target.value)}}>
 										<option value="ж">ж</option>
 										<option value="м">м</option>
 									</select></p>
-				<p>Образовательный уровень:</p>
-				<select id="createStudentEducationLeveGuardian" onChange={e => {createStudentWriteEducationLeveGuardian = e.target.value}}>
+				<p>Образовательный уровень:
+				<select id="createStudentEducationLeveGuardian" className="student-input" onChange={e => {obrurop = e.target.value}}>
 					<option>высшее</option>
 					<option>незаконченное высшее</option>
 					<option>средне-специальное</option>
 					<option>среднее</option>
 					<option>неполное среднее</option>
 				</select>
-				<p>Занятость:</p>
-				<select id="createStudentWorkGuardian" onChange={e => {createStudentWriteWorkGuardian = e.target.value}}>
+				</p>
+				<p>Занятость:
+				<select id="createStudentWorkGuardian" className="student-input" onChange={e => {zanop = e.target.value}}>
 					<option>работник по найму</option>
 					<option>предпринимательская деятельность</option>
 					<option>безработный</option>
@@ -257,6 +303,7 @@ export function NewStFaOp() {
 					<option>инвалид</option>
 					<option>пенсионер</option>
 				</select>
+				</p>
 			</div>
 		</div>
 	</div>
@@ -266,18 +313,18 @@ export function NewStFaOp() {
 export function ClStudFaPol() {
   return (
 	<div className="TextStyleNVR3Holder">
-		<div className="TextStyleNVR3">
+		<div className="family_student">
 			Мать:
 			<div>
-				<p className="displayFlex"><div>Образовательный уровень:&nbsp;</div><div id="profileStudentEducationLeveMother"></div></p>
-				<p className="displayFlex"><div>Занятость:&nbsp;</div><div id="profileStudentWorkMother"></div></p>
+				<p className="stud-addition"><div>Образовательный уровень:&nbsp;</div><div id="profileStudentEducationLeveMother"></div></p>
+				<p className="stud-addition"><div>Занятость:&nbsp;</div><div id="profileStudentWorkMother"></div></p>
 			</div>
 		</div>
-		<div className="TextStyleNVR3">
+		<div className="family_student">
 			Отец:
 			<div>
-				<p className="displayFlex"><div>Образовательный уровень:&nbsp;</div><div id="profileStudentEducationLeveFather"></div></p>
-				<p className="displayFlex"><div>Занятость:&nbsp;</div><div id="profileStudentWorkFather"></div></p>
+				<p className="stud-addition"><div>Образовательный уровень:&nbsp;</div><div id="profileStudentEducationLeveFather"></div></p>
+				<p className="stud-addition"><div>Занятость:&nbsp;</div><div id="profileStudentWorkFather"></div></p>
 			</div>
 		</div>
 	</div>
@@ -287,10 +334,21 @@ export function ClStudFaPol() {
 export function ClStudFaNepol() {
   return (
 	<div className="TextStyleNVR3Holder">
-		<div className="TextStyleNVR3">
+		<div className="family_student">
 			<div>
-				<p className="displayFlex"><div>Образовательный уровень:&nbsp;</div><div id="profileStudentEducationLeveGuardian"></div></p>
-				<p className="displayFlex"><div>Занятость:&nbsp;</div><div id="profileStudentWorkGuardian"></div></p>
+				<p className="stud-addition">
+					<div>
+						Образовательный уровень:&nbsp;
+					</div>
+					<div id="profileStudentEducationLeveGuardian">
+					</div>
+				</p>
+				<p className="stud-addition">
+					<div>Занятость:&nbsp;
+					</div>
+					<div id="profileStudentWorkGuardian">
+					</div>
+				</p>
 			</div>
 		</div>
 	</div>
@@ -299,42 +357,73 @@ export function ClStudFaNepol() {
 
 export function StudProfRed() {
   return (
-	<div id="SPRed" className="St">
-		<div>Фамилия:<input id="profileStudentNameEdit" type="text"></input></div>
-		<div>ФИО:<input id="profileStudentFIOEdit" type="text" style={{width: 250}}></input></div>
-		<div className="TextBox5">
-			Пол:<select id="profileStudentSexEdit">
+	<div id="SPRed" className="student_edit-space">
+		<div className="student-info-text">
+			Фамилия:
+			<input id="profileStudentNameEdit" className="student-input" type="text"></input>
+			ФИО:
+			<input id="profileStudentFIOEdit" className="student-input" type="text" style={{width: 250}}></input>
+			
+		</div>
+		
+		<div className="student-info-text">
+			Дата рождения:
+			<input id="profileStudentBirthdayEdit" className="student-input" type="date"></input>
+			
+			Пол:<select id="profileStudentSexEdit" className="student-input" >
 					<option>мужской</option>
 					<option>женский</option>
 				</select><div>,</div><div>учится</div>
+			
+			</div>
+
+	<div className="student-info-text">
+			Группа риска:
+			<select id="profileStudentGroupOfRiskEdit" className="student-input">
+				<option>нет</option>
+				<option>девиантное поведение</option>
+				<option>неуспеваемость</option>
+				<option>иное</option>
+				</select>
 		</div>
-		<div>Группа риска:<select id="profileStudentGroupOfRiskEdit">
-								<option>нет</option>
-								<option>девиантное поведение</option>
-								<option>неуспеваемость</option>
-								<option>иное</option>
-							</select>
-		</div>
-		<div>Дата рождения:<input id="profileStudentBirthdayEdit" type="date"></input></div>
-			<div className="TextBox"><div>Состояние семьи: </div><select id="profileStudentFamilyStatusEdit" onChange={e => {enter10(e.target.value)}}>
-				<option value="полная">полная</option>
-				<option value="неполная">неполная</option>
-				<option value="опекун">опекун</option>
-			</select></div>
-			<div className="TextBox"><div>Детей в семье: </div><div>1</div></div>
-			<div className="TextBox"><div>Достаток семьи: </div><select id="profileStudentFamilysMoneyEdit">
-						<option value="низкий доход">низкий доход</option>
-						<option value="средний доход">средний доход</option>
-						<option value="вполне благополучная семья">вполне благополучная семья</option>
-					</select></div>
-		<div>
-			<p id="profileStudentInformationAboutParentsEdit">Информация о родителях</p>
-			<div id="profileStudentInformationAboutParentsEditContainer">
+		
+		<div className="student-info-text">
+			<div>
+				Состояние семьи:
+				<select id="profileStudentFamilyStatusEdit" className="student-input" onChange={e => {enter10(e.target.value)}}>
+					<option value="полная">полная</option>
+					<option value="неполная">неполная</option>
+					<option value="опекун">опекун</option>
+					</select>
+				Детей в семье: 
+				1
+				</div>
+			</div>
+		
+		<div className="student-info-text">
+				Достаток семьи: 
+				<select id="profileStudentFamilysMoneyEdit" className="student-input">
+					<option value="низкий доход">низкий доход</option>
+					<option value="средний доход">средний доход</option>
+					<option value="вполне благополучная семья">вполне благополучная семья</option>
+					</select>
+				</div>
+			
+		
+		<p id="profileStudentInformationAboutParentsEdit"> Информация о родителях </p>
+			
+			
+		<div className="student-info-text">
+			
+			<div id="profileStudentInformationAboutParentsEditContainer" className="student-input">
 			</div>
 		</div>
-		<p>Дополнительное образование</p>
-		<div className="TextBox">
-			<div style={{}}>Сертификат ПФДО: </div><input id="profileStudentPFDOEdit" type="text"></input>
+		
+		<p> Дополнительное образование</p>
+		
+		
+		<div className="student-info-text">
+			<div style={{}}>Сертификат ПФДО: </div><input id="profileStudentPFDOEdit" className="student-input" type="text"></input>
 		</div>
 		<div className="TextBox2">
 			<div className="TextBox3">
@@ -365,125 +454,259 @@ export function Overlay() {
   );
 }
 
+export function Event() {
+  return (
+	<div className="TextStyleNVR">
+		<p><div id="navr2">НАЗВАНИЕ СОБЫТИЯ</div></p>
+		<p className="displayFlex"><div id="danavr2">дата</div><div>,</div><div id="fovr2">форма</div><div>,</div><div id="napvr2">познавательное</div></p>
+	</div>
+  );
+}
+
 export function EventCreateClass() {
   return (
-	<div className="OTB">
-		<div className="ListPr4">
-			<p>Номер класса:<input id="createClassNumber" type="text"></input></p>
-			<p>Буква класса:<input id="createClassLetter" type="text"></input></p>
-			<button className="TBVR" onClick={function(){enternewcl();}}> Создать класс </button>
-		</div>
+	<div className="ListPr4">
+		<p className="text-info">Номер класса: <input id="createClassNumber"  className="student-input" type="text"></input></p>
+		<p className="text-info">Буква класса: <input id="createClassLetter"  className="student-input" type="text"></input></p>
+		<button className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterControlSystemClasses();}}></img></button> 
 	</div>
   );
 }
 
 export function EventDelClass() {
   return (
-	<div className="OTB">
-		<div className="ListPr4">
-			<p>Класс:
-				<select id="deleteClassSelect">
-				</select>
-			</p>
-			<button className="TBVR" onClick={function(){}}> Удалить класс </button>
-		</div>
+	<div className="ListPr4">
+		<p className="text-info">Класс:
+			<select id="deleteClassSelect" className="student-input">
+			</select>
+		</p>
+		<button className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterControlSystemClassesDelete();}}></img></button> 
 	</div>
+  );
+}
+
+export function AddEducationCreateNapr() {
+  return (
+		<div className="ListPr4">
+			<p className="text-info">Название направления: 
+			<input id="createDirection" className="student-input" type="text"></input>
+			</p>
+			<button className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterus3();}}></img></button> 
+		</div>
   );
 }
 
 export function EventCreateNapr() {
   return (
-	<div className="OTB">
 		<div className="ListPr4">
-			<p>Название направления:<input id="createDirection" type="text"></input></p>
-			<button className="TBVR" onClick={function(){enterus3();}}> Создать направление </button>
+			<p className="text-info">Название направления: 
+			<input id="EventCreateDirection" className="student-input" type="text"></input>
+			</p>
+			<button className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterControlSystemEventCreateDirection();}}></img></button> 
 		</div>
-	</div>
   );
 }
 
-export function EventCreateOrganization() {
+export function AddEducationCreateOrganization() {
   return (
-	<div className="OTB">
 		<div className="ListPr4">
-			<p>Название организации дополнительного образования:<input id="EventCreateOrganizationInputName" type="text"></input></p>
-			<p>Описание:<textarea id="EventCreateOrganizationInputDescriprtion" type="text"></textarea></p>
-			<button className="TBVR" onClick={function(){enterControlSystemEvents();}}> Создать </button>
+			<p className="text-info">Название организации: <input id="AddEducationCreateOrganizationInputName" className="student-input" type="text"></input></p>
+			<p className="text-info">Описание: <textarea id="AddEducationCreateOrganizationInputDescriprtion" className="student-input" type="text"></textarea></p>
+			<button className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterControlSystemAddEducation();}}></img></button>
+			
 		</div>
-	</div>
+  );
+}
+
+export function AddEducationShowDirections() {
+  return (
+		<div className="ListPr4">
+			<p className="text-info">Направления:<select id="showDirectionsSelect" className="student-input" size="10"></select></p>
+			<button className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterControlSystemAddEducationDeleteDirections();}}></img></button>
+			
+		</div>
   );
 }
 
 export function EventShowDirections() {
   return (
-	<div className="OTB">
 		<div className="ListPr4">
-			<p>Направления:<select id="showDirectionsSelect" size="10"></select></p>
-			<button className="TBVR" onClick={function(){enterControlSystemEventsDeleteDirections();}}> Удалить выбранное направление </button>
+			<p className="text-info">Направления:<select id="EventShowDirectionsSelect" className="student-input" size="10"></select></p>
+			<button className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterControlSystemEventDeleteDirections();}}></img></button>
+			
 		</div>
-	</div>
   );
 }
 
-export function EventShowOrganizations() {
+export function AddEducationShowOrganizations() {
   return (
-	<div className="OTB">
 		<div className="ListPr4">
-			<p>Организации:<select id="showOrganizationsSelect" size="10"></select></p>
-			<button className="TBVR" onClick={function(){enterControlSystemEventsDeleteDirections();}}> Удалить выбранную организацию </button>
+			<p className="text-info">Организации:<select id="showOrganizationsSelect" className="student-input" size="10"></select></p>
+			<button className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterControlSystemAddEducationDeleteDirections();}}></img></button>
+			
 		</div>
-	</div>
+  );
+}
+
+export function AddEducationCreateProgram() {
+  return (
+		<div className="ListPr4">
+			<p className="text-info">Название программы: <input id="createProgramNameInput" className="student-input" type="text"></input></p>
+			<p className="text-info">Описание: <textarea id="createProgramDescriprtionInput" className="student-input" type="text"></textarea></p>
+			<p className="text-info">Учреждение: <select id="createProgramShowOrganizationsSelect" className="student-input">
+			<option selected disabled></option>
+			</select></p>
+			<p className="text-info">Направление: <select id="createProgramShowDirectionsSelectChoose" className="student-input" size="3" onChange={e => {enterControlSystemAddEducationDeleteDirectionFromSelect(e.target.selectedIndex)}}></select>
+			<select id="createProgramShowDirectionsSelect" className="student-input">
+			<option selected disabled></option>
+			</select></p>
+			<button className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterControlSystemAddEducationCreateProgram();}}></img></button>
+	
+		</div>
   );
 }
 
 export function EventCreateProgram() {
   return (
-	<div className="OTB">
 		<div className="ListPr4">
-			<p>Название программы:<input id="createProgramNameInput" type="text"></input></p>
-			<p>Описание:<textarea id="createProgramDescriprtionInput" type="text"></textarea></p>
-			<p>Учреждение:<select id="createProgramShowOrganizationsSelect">
+			<p className="text-info">Название формы: <input id="EventCreateProgramNameInput" className="student-input" type="text"></input></p>
+			<p className="text-info">Направление: <select id="EventCreateProgramShowDirectionsSelectChoose" className="student-input" size="3" onChange={e => {enterControlSystemEventDeleteDirectionFromSelect(e.target.selectedIndex)}}></select>
+			<select id="EventCreateProgramShowDirectionsSelect" className="student-input">
 			<option selected disabled></option>
 			</select></p>
-			<p>Направление:<select id="createProgramShowDirectionsSelectChoose" size="3" onChange={e => {enterControlSystemEventsDeleteDirectionFromSelect(e.target.selectedIndex)}}></select>
-			<select id="createProgramShowDirectionsSelect">
-			<option selected disabled></option>
-			</select></p>
-			<button className="TBVR" onClick={function(){enterControlSystemEventsCreateProgram();}}> Создать направление </button>
+			<button className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterControlSystemEventCreateProgram();}}></img></button>
+	
 		</div>
-	</div>
+  );
+}
+
+export function AddEducationShowPrograms() {
+  return (
+		<div className="ListPr4">
+			<p className="text-info">Программы: <select id="showProgramSelect" className="student-input" size="10"></select></p>
+			<button className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterControlSystemAddEducationDeletePrograms();}}></img></button>
+			
+		</div>
   );
 }
 
 export function EventShowPrograms() {
   return (
-	<div className="OTB">
 		<div className="ListPr4">
-			<p>Программы:<select id="showProgramSelect" size="10"></select></p>
-			<button className="TBVR" onClick={function(){enterControlSystemEventsDeletePrograms();}}> Удалить выбранную программу </button>
+			<p className="text-info">Программы: <select id="EventShowProgramSelect" className="student-input" size="10"></select></p>
+			<button className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterControlSystemEventDeletePrograms();}}></img></button>
+			
 		</div>
-	</div>
   );
 }
 
 export function CrPlan() {
   return (
-	<div className="OTB">
 		<div className="ListPr4">
-			<p>Год плана:<input id="createYearPlanInputYear" type="text"></input></p>
-			<p>Цели воспитательной работы:</p>
-			<p><textarea id="createYearPlanInputGoalsOfEducationalWork" type="text" style={{width: 500, height:100}}></textarea></p>
-			<p>Целевые приоритеты для учащихся с 1 по 4 кл:</p>
-			<p><textarea id="createYearPlanInputTargetPriorities14" type="text" style={{width: 500, height:100}}></textarea></p>
-			<p>Целевые приоритеты для учащихся с 5 по 9 кл:</p>
-			<p><textarea id="createYearPlanInputTargetPriorities59" type="text" style={{width: 500, height:100}}></textarea></p>
-			<p>Целевые приоритеты для учащихся с 10 по 11 кл:</p>
-			<p><textarea id="createYearPlanInputTargetPriorities1011" type="text" style={{width: 500, height:100}}></textarea></p>
-			<p>Задачи воспитательной работы:</p>
-			<p><textarea id="createYearPlanInputTasksOfEducationalWork" type="text" style={{width: 500, height:100}}></textarea></p>
-			<button className="TBVR" onClick={function(){enterus2();}}> Задать план школы </button>
+			<p className="text-info">Год плана: <input id="createYearPlanInputYear" className="student-input" type="text"></input></p>
+			<p className="text-info">Цели воспитательной работы: </p>
+			<p className="text-info"><textarea id="createYearPlanInputGoalsOfEducationalWork" className="student-input" type="text" ></textarea></p>
+			<p className="text-info">Целевые приоритеты для учащихся с 1 по 4 класс: </p>
+			<p className="text-info"><textarea id="createYearPlanInputTargetPriorities14" className="student-input" type="text" ></textarea></p>
+			<p className="text-info">Задачи для 1-4 классов: </p>
+			<p className="text-info"><textarea id="createYearPlanInputTasks14" className="student-input" type="text" ></textarea></p>
+			<p className="text-info">Целевые приоритеты для учащихся с 5 по 9 класс: </p>
+			<p className="text-info"><textarea id="createYearPlanInputTargetPriorities59" className="student-input" type="text" ></textarea></p>
+			<p className="text-info">Задачи для 5-9 классов: </p>
+			<p className="text-info"><textarea id="createYearPlanInputTasks59" className="student-input" type="text" ></textarea></p>
+			<p className="text-info">Целевые приоритеты для учащихся с 10 по 11 класс: </p>
+			<p className="text-info"><textarea id="createYearPlanInputTargetPriorities1011" className="student-input" type="text" ></textarea></p>
+			<p className="text-info">Задачи для 10-11 классов: </p>
+			<p className="text-info"><textarea id="createYearPlanInputTasks1011" className="student-input" type="text" ></textarea></p>
+			<button id="container" className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterControlSystemPlans();}}></img></button>
 		</div>
-	</div>
+  );
+}
+
+export function PlanForAdmin() {
+  return (
+		<table height="100%" border="1">
+			<tr>
+				<td width="200px">Цель воспитательной деятельности школы:</td>
+				<td width="200px"></td>
+				<td width="700px" id="cpvrch"></td>
+			</tr>
+			<tr>
+				<td>Целевые приоритеты:</td>
+				<td>Для учащихся с 1 по 4 класс:</td>
+				<td id="cpr14">
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>Для учащихся с 5 по 9 класс</td>
+				<td id="cpr59">
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>Учащиеся с 10 по 11 класс</td>
+				<td id="cpr1011">
+				</td>
+			</tr>
+			<tr>
+				<td>Задачи воспитательной деятельности:</td>
+				<td>Для учащихся с 1 по 4 класс:</td>
+				<td id="zr14">
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>Для учащихся с 5 по 9 класс</td>
+				<td id="zr59">
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>Учащиеся с 10 по 11 класс</td>
+				<td id="zr1011">
+				</td>
+			</tr>
+		</table>
+  );
+}
+
+export function PlanForClass() {
+  return (
+		<table height="100%" border="1">
+			<tr>
+				<td width="200px">Цель воспитательной деятельности школы:</td>
+				<td width="700px" id="goalsOfEducationalActivity"></td>
+			</tr>
+			<tr>
+				<td>Целевые приоритеты класса:</td>
+				<td id="TargetPriorities">
+				</td>
+			</tr>
+			<tr>
+				<td>Задачи воспитательной деятельности класса:</td>
+				<td id="Tasks">
+				</td>
+			</tr>
+		</table>
+  );
+}
+
+export function PlanForClassSelect() {
+  return (
+
+		<p>Класс:<select id="PlanClasses" className="student-input">
+			<option selected disabled></option>
+			</select></p>
+  );
+}
+
+export function EventsForClassSelect() {
+  return (
+
+		<p>Класс:<select id="EventClasses" className="student-input">
+			<option selected disabled></option>
+			</select></p>
   );
 }
 
@@ -743,6 +966,160 @@ export function OClNORM2() {
 				</div>
 				<hr/>
 			</div>
+		</div>
+  );
+}
+
+
+export function EventCreateUser() {
+  return (
+	<div className="OTB">
+		<div className="ListPr4">
+			<p>Логин пользователя: <input id="nu" type="text"></input></p>
+			<p>Пароль пользователя:<input id="le" type="text"></input></p>
+			<button className="TBVR" onClick={function(){enternewcl();}}> Создать Пользователя </button>
+		</div>
+	</div>
+  );
+}
+
+export function EventDelUser() {
+  return (
+	<div className="OTB">
+		<div className="ListPr4">
+			<p>Пользователь:
+				<select id="delClSelect">
+				</select>
+			</p>
+			<button className="TBVR" onClick={function(){}}> Удалить Пользователя </button>
+		</div>
+	</div>
+  );
+}
+
+export function EventUserRole() {
+  return (
+	<div className="OTB">
+		<div className="ListPr4">
+			<p>Пользователь:
+				<select id="delClSelect">
+				</select>
+			</p>
+			<p>Роль:
+				<select id="delClSelect">
+				</select>
+			</p>
+			<button className="TBVR" onClick={function(){}}> Назначить роль </button>
+		</div>
+	</div>
+  );
+}
+
+export function EventEditUser() {
+  return (
+	<div className="ListPr4">
+		<p className="text-info">Изменить ФИО:
+			<div>
+				<input id="name" type="text" placeholder="имя" className="login-input"/>
+				
+				<input id="middle_name" type="text" placeholder="отчество" className="login-input"/>
+				
+				<input id="last_name" type="text" placeholder="фамилия" className="login-input"/>
+			</div>
+		</p>
+		
+		<button id="container" className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){edituser();}}></img></button> 
+		
+		<p className="text-info">Изменить пароль:
+			<div>
+				<input id="pass" type="password" placeholder="новый пароль" className="login-input"/>
+			</div>
+		</p>
+		
+		<button id="container" className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){editpassuser();}}></img></button> 
+		
+	</div>
+  );
+}
+
+async function edituser() {
+	
+	let user = {
+		name: document.getElementById("name").value,//имя
+		lname: document.getElementById("last_name").value,// фамилия
+		mname: document.getElementById("middle_name").value,// отчетсво
+	};
+
+	let response = await fetch(user_edit, {
+	method: 'POST',// пока что пользуем методы POST и GET, далее может быть еще какие либо  методы будем использовать, особенно для админов
+	headers: {
+	Authorization: `Bearer ${localStorage.token}`,
+	'Content-Type': 'application/json;charset=utf-8'// стандартная строка которую менять не стоит в принципе если мы конечно не хотим здраво так упороться
+	},
+	body: JSON.stringify(user)
+	});
+	
+	let result = await response.json();// дада, вот этой и она тоже асинхронна
+										// в ней по идее должен быть  джейсон с токеном
+	if(response.status===200) { 
+		alert("Изменение успешно") }
+	else { alert(result.message);}
+}
+
+async function editpassuser() {
+	let user = {
+		password: document.getElementById("pass").value,//новый пароль
+	};
+
+	let response = await fetch(user_edit, {
+	method: 'POST',// пока что пользуем методы POST и GET, далее может быть еще какие либо  методы будем использовать, особенно для админов
+	headers: {
+	Authorization: `Bearer ${localStorage.token}`,
+	'Content-Type': 'application/json;charset=utf-8'// стандартная строка которую менять не стоит в принципе если мы конечно не хотим здраво так упороться
+	},
+	body: JSON.stringify(user)
+	});
+	
+	let result = await response.json();// дада, вот этой и она тоже асинхронна
+										// в ней по идее должен быть  джейсон с токеном
+	if(response.status===200) { 
+		alert("Изменение успешно") }
+	else { alert(result.message);}
+}
+
+export function ClassToUser() {
+  return (
+		<div className="ListPr4">
+			<p className="text-info">Пользователь:<select id="ClassToUserUser" className="student-input">
+				<option selected disabled></option>
+				</select></p>
+			<p className="text-info">Класс:<select id="ClassToUserClass" className="student-input">
+				<option selected disabled></option>
+				</select></p>
+				
+			<button id="container" className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterControlSystemUsersClassToUser();}}></img></button> 
+		</div>
+  );
+}
+
+export function UserNewUser() {
+  return (
+		<div className="ListPr4">
+			<p className="text-info">Логин: <input id="newUserLogin" className="student-input" type="text"></input></p>
+			<p className="text-info">Пароль: <input id="newUserPassword" className="student-input" type="password"></input></p>
+			<p className="text-info">Фамилия: <input id="newUserLastname" className="student-input" type="text"></input></p>
+			<p className="text-info">Имя: <input id="newUserName" className="student-input" type="text"></input></p>
+			<p className="text-info">Отчество: <input id="newUserMiddlename" className="student-input" type="text"></input></p>
+			<p className="text-info">Комментарий: <input id="newUserComment" className="student-input" type="text"></input></p>
+			<p className="text-info">Роль: <select id="newUserRole" className="student-input">
+				<option selected disabled></option>
+				<option value="USER">классный руководитель</option>
+				<option value="ADMIN">заместитель по воспитательной работе</option>
+				</select></p>
+				
+			
+			
+			<button id="container" className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterControlSystemUsersCreateUser();}}></img></button> 
 		</div>
   );
 }
