@@ -1,15 +1,12 @@
 import './ProjectCSS.css';
 import logo from './images/icon.png';
 
-import {enter6, enter9, fastat, obrurma, zanma, obrurfa, zanfa, obrurop, zanop} from "./NewSt.js";
-import {enter10} from "./Classroom.js";
-import {entervr} from "./EducationalWork.js";
-import {enterControlSystemUsers, enterControlSystemUsersClassToUser, enterControlSystemUsersCreateUser, enternewcl, enternewcl2, enterus3} from "./Control.js";
-import {enterControlSystemClassesDelete, enterControlSystemClasses} from "./ControlSystemClasses.js";
-import {enterControlSystemPlans} from "./ControlSystemPlans.js";
-import {enterGoalsShowClasses, enterGoalsChangeClass} from "./Goals.js";
-import {enterControlSystemAddEducation,enterControlSystemAddEducationShowDirections, directionDelete,enterControlSystemAddEducationDeleteDirections,enterControlSystemAddEducationDeleteOrganizations,enterControlSystemAddEducationThisDirection,enterControlSystemAddEducationDeleteDirectionFromSelect,enterControlSystemAddEducationCreateProgram,programDelete,enterControlSystemAddEducationDeletePrograms} from "./ControlSystemAdditionalEducation.js";
-import {enterControlSystemEventCreateDirection,enterControlSystemEventDeleteDirectionFromSelect,enterControlSystemEventCreateProgram,enterControlSystemEventDeleteDirections,enterControlSystemEventDeletePrograms} from "./ControlSystemEvents.js";
+import {enter6, enter9, fastat, obrurma, zanma, obrurfa, zanfa, obrurop, zanop} from "./components/ui/ClassroomLayouts/ClassroomCreateStudent/ClassroomCreateStudent.jsx";
+import {enter10} from "./components/routes/ClassroomPage/ClassroomPage.jsx";
+import {entervr} from "./components/routes/EducationWorkPage/EducationalWork.jsx";
+import {enterControlSystemUsers, enterControlSystemUsersClassToUser, enterControlSystemUsersCreateUser, enternewcl, enternewcl2, enterus2, enterus3} from "./components/routes/ControlPage/ControlPage.jsx";
+import {enterControlSystemClassesDelete, enterControlSystemClasses} from "./components/ui/ControlSystemLayouts/ControlSystemClasses/ControlSystemClasses.jsx";
+import {enterControlSystemEvents,enterControlSystemEventsShowDirections, directionDelete,enterControlSystemEventsDeleteDirections,enterControlSystemEventsDeleteOrganizations,enterControlSystemEventsThisDirection,enterControlSystemEventsDeleteDirectionFromSelect,enterControlSystemEventsCreateProgram,programDelete,enterControlSystemEventsDeletePrograms} from "./components/ui/ControlSystemLayouts/ControlSystemEvents/ControlSystemEvents.jsx";
 
 
 let port_log = "http://mavr.kemsu.ru:5500/API/user/login";
@@ -71,18 +68,18 @@ export function AdditionalEducation() {
 export function EvProf() {
   return (
 		<div id="EP" className="ew_event">
-			<div className="displayFlex"><div>Дата события:&nbsp;</div><div id="profileEventDateOfEvent">15.03.22</div></div>
-			<div className="displayFlex"><div>Форма воспитательной работы:&nbsp;</div><div id="profileEventFormOfEducationalActivity">урок города</div></div>
-			<div className="displayFlex"><div>Кто проводит:&nbsp;</div><div id="profileEventWhoProvide">классный руководитель</div></div>
-			<div id="profileEventDirection" className="displayFlex"><div>Направление:&nbsp;</div></div>
-			<div className="displayFlex"><div>Сетевое взаимодействие:&nbsp;</div><div id="profileEventNetworkConnection">Библиотека "Читай - город"</div></div>
-			<div className="displayFlex"><div>Проект:</div><div id="profileEventProject" className="paddingLeft">Живые уроки</div></div>
-			<div><div>Учащиеся:</div><div id="profileEventStudents" className="ucheniki2"></div></div>
-			<div><div>Приглашенные организации:</div><div id="profileEventInvitedOrganizations">орг1, орг2</div></div>
-			<div><div>Приглашенные родители:</div><div id="profileEventInvitedParents"></div></div>
-			<div className="displayFlex"><div>Сертификат:&nbsp;</div><div id="profileEventSertificate"></div></div>
+			<div className="displayFlex"><div>Дата события:&nbsp;</div><div id="danavr2">15.03.22</div></div>
+			<div className="displayFlex"><div>Форма воспитательной работы:&nbsp;</div><div id="fovr2">урок города</div></div>
+			<div className="displayFlex"><div>Кто проводит:&nbsp;</div><div id="whvr2">классный руководитель</div></div>
+			<div id="naprsob2" className="displayFlex"><div>Направление:&nbsp;</div></div>
+			<div className="displayFlex"><div>Сетевое взаимодействие:&nbsp;</div><div id="svvr2">Библиотека "Читай - город"</div></div>
+			<div className="displayFlex"><div>Проект:</div><div id="provr2" className="paddingLeft">Живые уроки</div></div>
+			<div><div>Учащиеся:</div><div id="uvr2" className="ucheniki2"></div></div>
+			<div><div>Приглашенные организации:</div><div id="povr2">орг1, орг2</div></div>
+			<div><div>Приглашенные родители:</div><div id="prvr2"></div></div>
+			<div className="displayFlex"><div>Сертификат:&nbsp;</div><div id="revr2"></div></div>
 			<div className="box">
-				<a href="VRred"> 
+				<a href="src/components/ui/EducationWorkLayouts/EducationWorkEdit/EducationWorkEdit.jsx">
 					<button className="profile-button"><img src="https://i.ibb.co/9VHb7z3/edit.png" className="profile-button2"></img></button> 
 				</a>
 				<a href="VRsoh"> 
@@ -346,7 +343,7 @@ export function ClStudFaNepol() {
 				<p className="stud-addition">
 					<div>Занятость:&nbsp;
 					</div>
-					<div id="profileStudentWorkGuardian">
+					<div id="createStudentWorkGuardian">
 					</div>
 				</p>
 			</div>
@@ -468,7 +465,7 @@ export function EventCreateClass() {
 	<div className="ListPr4">
 		<p className="text-info">Номер класса: <input id="createClassNumber"  className="student-input" type="text"></input></p>
 		<p className="text-info">Буква класса: <input id="createClassLetter"  className="student-input" type="text"></input></p>
-		<button className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterControlSystemClasses();}}></img></button> 
+		<button id="container" className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterControlSystemClasses();}}></img></button> 
 	</div>
   );
 }
@@ -480,19 +477,8 @@ export function EventDelClass() {
 			<select id="deleteClassSelect" className="student-input">
 			</select>
 		</p>
-		<button className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterControlSystemClassesDelete();}}></img></button> 
+		<button id="container" className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterControlSystemClassesDelete();}}></img></button> 
 	</div>
-  );
-}
-
-export function AddEducationCreateNapr() {
-  return (
-		<div className="ListPr4">
-			<p className="text-info">Название направления: 
-			<input id="createDirection" className="student-input" type="text"></input>
-			</p>
-			<button className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterus3();}}></img></button> 
-		</div>
   );
 }
 
@@ -500,29 +486,19 @@ export function EventCreateNapr() {
   return (
 		<div className="ListPr4">
 			<p className="text-info">Название направления: 
-			<input id="EventCreateDirection" className="student-input" type="text"></input>
+			<input id="createDirection" className="student-input" type="text"></input>
 			</p>
-			<button className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterControlSystemEventCreateDirection();}}></img></button> 
+			<button id="container" className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterus3();}}></img></button> 
 		</div>
   );
 }
 
-export function AddEducationCreateOrganization() {
+export function EventCreateOrganization() {
   return (
 		<div className="ListPr4">
-			<p className="text-info">Название организации: <input id="AddEducationCreateOrganizationInputName" className="student-input" type="text"></input></p>
-			<p className="text-info">Описание: <textarea id="AddEducationCreateOrganizationInputDescriprtion" className="student-input" type="text"></textarea></p>
-			<button className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterControlSystemAddEducation();}}></img></button>
-			
-		</div>
-  );
-}
-
-export function AddEducationShowDirections() {
-  return (
-		<div className="ListPr4">
-			<p className="text-info">Направления:<select id="showDirectionsSelect" className="student-input" size="10"></select></p>
-			<button className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterControlSystemAddEducationDeleteDirections();}}></img></button>
+			<p className="text-info">Название организации: <input id="EventCreateOrganizationInputName" className="student-input" type="text"></input></p>
+			<p className="text-info">Описание: <textarea id="EventCreateOrganizationInputDescriprtion" className="student-input" type="text"></textarea></p>
+			<button id="container" className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterControlSystemEvents();}}></img></button>
 			
 		</div>
   );
@@ -531,37 +507,19 @@ export function AddEducationShowDirections() {
 export function EventShowDirections() {
   return (
 		<div className="ListPr4">
-			<p className="text-info">Направления:<select id="EventShowDirectionsSelect" className="student-input" size="10"></select></p>
-			<button className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterControlSystemEventDeleteDirections();}}></img></button>
+			<p className="text-info">Направления:<select id="showDirectionsSelect" className="student-input" size="10"></select></p>
+			<button id="container" className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterControlSystemEventsDeleteDirections();}}></img></button>
 			
 		</div>
   );
 }
 
-export function AddEducationShowOrganizations() {
+export function EventShowOrganizations() {
   return (
 		<div className="ListPr4">
 			<p className="text-info">Организации:<select id="showOrganizationsSelect" className="student-input" size="10"></select></p>
-			<button className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterControlSystemAddEducationDeleteDirections();}}></img></button>
+			<button id="container" className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterControlSystemEventsDeleteDirections();}}></img></button>
 			
-		</div>
-  );
-}
-
-export function AddEducationCreateProgram() {
-  return (
-		<div className="ListPr4">
-			<p className="text-info">Название программы: <input id="createProgramNameInput" className="student-input" type="text"></input></p>
-			<p className="text-info">Описание: <textarea id="createProgramDescriprtionInput" className="student-input" type="text"></textarea></p>
-			<p className="text-info">Учреждение: <select id="createProgramShowOrganizationsSelect" className="student-input">
-			<option selected disabled></option>
-			</select></p>
-			<p className="text-info">Направление: <select id="createProgramShowDirectionsSelectChoose" className="student-input" size="3" onChange={e => {enterControlSystemAddEducationDeleteDirectionFromSelect(e.target.selectedIndex)}}></select>
-			<select id="createProgramShowDirectionsSelect" className="student-input">
-			<option selected disabled></option>
-			</select></p>
-			<button className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterControlSystemAddEducationCreateProgram();}}></img></button>
-	
 		</div>
   );
 }
@@ -569,23 +527,17 @@ export function AddEducationCreateProgram() {
 export function EventCreateProgram() {
   return (
 		<div className="ListPr4">
-			<p className="text-info">Название формы: <input id="EventCreateProgramNameInput" className="student-input" type="text"></input></p>
-			<p className="text-info">Направление: <select id="EventCreateProgramShowDirectionsSelectChoose" className="student-input" size="3" onChange={e => {enterControlSystemEventDeleteDirectionFromSelect(e.target.selectedIndex)}}></select>
-			<select id="EventCreateProgramShowDirectionsSelect" className="student-input">
+			<p className="text-info">Название программы: <input id="createProgramNameInput" className="student-input" type="text"></input></p>
+			<p className="text-info">Описание: <textarea id="createProgramDescriprtionInput" className="student-input" type="text"></textarea></p>
+			<p className="text-info">Учреждение: <select id="createProgramShowOrganizationsSelect" className="student-input">
 			<option selected disabled></option>
 			</select></p>
-			<button className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterControlSystemEventCreateProgram();}}></img></button>
+			<p className="text-info">Направление: <select id="createProgramShowDirectionsSelectChoose" className="student-input" size="3" onChange={e => {enterControlSystemEventsDeleteDirectionFromSelect(e.target.selectedIndex)}}></select>
+			<select id="createProgramShowDirectionsSelect" className="student-input">
+			<option selected disabled></option>
+			</select></p>
+			<button id="container" className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterControlSystemEventsCreateProgram();}}></img></button>
 	
-		</div>
-  );
-}
-
-export function AddEducationShowPrograms() {
-  return (
-		<div className="ListPr4">
-			<p className="text-info">Программы: <select id="showProgramSelect" className="student-input" size="10"></select></p>
-			<button className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterControlSystemAddEducationDeletePrograms();}}></img></button>
-			
 		</div>
   );
 }
@@ -593,8 +545,8 @@ export function AddEducationShowPrograms() {
 export function EventShowPrograms() {
   return (
 		<div className="ListPr4">
-			<p className="text-info">Программы: <select id="EventShowProgramSelect" className="student-input" size="10"></select></p>
-			<button className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterControlSystemEventDeletePrograms();}}></img></button>
+			<p className="text-info">Программы: <select id="showProgramSelect" className="student-input" size="10"></select></p>
+			<button id="container" className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterControlSystemEventsDeletePrograms();}}></img></button>
 			
 		</div>
   );
@@ -606,107 +558,16 @@ export function CrPlan() {
 			<p className="text-info">Год плана: <input id="createYearPlanInputYear" className="student-input" type="text"></input></p>
 			<p className="text-info">Цели воспитательной работы: </p>
 			<p className="text-info"><textarea id="createYearPlanInputGoalsOfEducationalWork" className="student-input" type="text" ></textarea></p>
-			<p className="text-info">Целевые приоритеты для учащихся с 1 по 4 класс: </p>
+			<p className="text-info">Целевые приоритеты для учащихся с 1 по 4 кл: </p>
 			<p className="text-info"><textarea id="createYearPlanInputTargetPriorities14" className="student-input" type="text" ></textarea></p>
-			<p className="text-info">Задачи для 1-4 классов: </p>
-			<p className="text-info"><textarea id="createYearPlanInputTasks14" className="student-input" type="text" ></textarea></p>
-			<p className="text-info">Целевые приоритеты для учащихся с 5 по 9 класс: </p>
+			<p className="text-info">Целевые приоритеты для учащихся с 5 по 9 кл: </p>
 			<p className="text-info"><textarea id="createYearPlanInputTargetPriorities59" className="student-input" type="text" ></textarea></p>
-			<p className="text-info">Задачи для 5-9 классов: </p>
-			<p className="text-info"><textarea id="createYearPlanInputTasks59" className="student-input" type="text" ></textarea></p>
-			<p className="text-info">Целевые приоритеты для учащихся с 10 по 11 класс: </p>
+			<p className="text-info">Целевые приоритеты для учащихся с 10 по 11 кл: </p>
 			<p className="text-info"><textarea id="createYearPlanInputTargetPriorities1011" className="student-input" type="text" ></textarea></p>
-			<p className="text-info">Задачи для 10-11 классов: </p>
-			<p className="text-info"><textarea id="createYearPlanInputTasks1011" className="student-input" type="text" ></textarea></p>
-			<button id="container" className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterControlSystemPlans();}}></img></button>
+			<p className="text-info">Задачи воспитательной работы: </p>
+			<p className="text-info"><textarea id="createYearPlanInputTasksOfEducationalWork" className="student-input" type="text" ></textarea></p>
+			<button id="container" className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){enterus2();}}></img></button>
 		</div>
-  );
-}
-
-export function PlanForAdmin() {
-  return (
-		<table height="100%" border="1">
-			<tr>
-				<td width="200px">Цель воспитательной деятельности школы:</td>
-				<td width="200px"></td>
-				<td width="700px" id="cpvrch"></td>
-			</tr>
-			<tr>
-				<td>Целевые приоритеты:</td>
-				<td>Для учащихся с 1 по 4 класс:</td>
-				<td id="cpr14">
-				</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>Для учащихся с 5 по 9 класс</td>
-				<td id="cpr59">
-				</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>Учащиеся с 10 по 11 класс</td>
-				<td id="cpr1011">
-				</td>
-			</tr>
-			<tr>
-				<td>Задачи воспитательной деятельности:</td>
-				<td>Для учащихся с 1 по 4 класс:</td>
-				<td id="zr14">
-				</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>Для учащихся с 5 по 9 класс</td>
-				<td id="zr59">
-				</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>Учащиеся с 10 по 11 класс</td>
-				<td id="zr1011">
-				</td>
-			</tr>
-		</table>
-  );
-}
-
-export function PlanForClass() {
-  return (
-		<table height="100%" border="1">
-			<tr>
-				<td width="200px">Цель воспитательной деятельности школы:</td>
-				<td width="700px" id="goalsOfEducationalActivity"></td>
-			</tr>
-			<tr>
-				<td>Целевые приоритеты класса:</td>
-				<td id="TargetPriorities">
-				</td>
-			</tr>
-			<tr>
-				<td>Задачи воспитательной деятельности класса:</td>
-				<td id="Tasks">
-				</td>
-			</tr>
-		</table>
-  );
-}
-
-export function PlanForClassSelect() {
-  return (
-
-		<p>Класс:<select id="PlanClasses" className="student-input">
-			<option selected disabled></option>
-			</select></p>
-  );
-}
-
-export function EventsForClassSelect() {
-  return (
-
-		<p>Класс:<select id="EventClasses" className="student-input">
-			<option selected disabled></option>
-			</select></p>
   );
 }
 
@@ -881,65 +742,63 @@ export function OClNORM() {
   return (
 		<div className="ONORMVIR">
 			<div className="OClNORMBlock">
-				<div><b>По учащимся класса</b></div>
+				<div className="student-info-text"><b>По учащимся класса</b></div>
 				<div className="OClNORMBlockIn">
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Пофамильно:</div><input id="reportQuantityName" className="ListPrText2" type="checkbox"></input></div>
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Количественный:</div><input id="reportQuantity" className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Пофамильно:</div><input className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Количественный:</div><input className="ListPrText2" type="checkbox"></input></div>
 				</div>
 				<hr/>
-				<div><b>По количеству мальчиков/девочек в классе:</b></div>
+				<div className="student-info-text"><b>По количеству мальчиков/девочек в классе:</b></div>
 				<div className="OClNORMBlockIn">
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Мальчиков:</div><input id="reportSexMale" className="ListPrText2" type="checkbox"></input></div>
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Девочек:</div><input id="reportSexFemale" className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Мальчиков:</div><input className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Девочек:</div><input className="ListPrText2" type="checkbox"></input></div>
 				</div>
 				<hr/>
-				<div><b>Количественный по статусу семей:</b></div>
+				<div className="student-info-text"><b>Количественный по статусу семей:</b></div>
 				<div className="OClNORMBlockIn">
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Всего семей:</div><input id="reportFamilyAll" className="ListPrText2" type="checkbox"></input></div>
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Полных:</div><input id="reportFamilyFull" className="ListPrText2" type="checkbox"></input></div>
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Неполных:</div><input id="reportFamilyNoFull" className="ListPrText2" type="checkbox"></input></div>
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Опекунов:</div><input id="reportFamilyGuardian" className="ListPrText2" type="checkbox"></input></div>
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Многодетные:</div><input id="reportFamilyManyChildren" className="ListPrText2" type="checkbox"></input></div>
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Малообеспеченные:</div><input id="reportFamilyLowMoney" className="ListPrText2" type="checkbox"></input></div>
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Отцы-одиночки:</div><input id="reportFamilyLonelyFathers" className="ListPrText2" type="checkbox"></input></div>
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Матери-одиночки:</div><input id="reportFamilyLonelyMothers" className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Всего семей:</div><input className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Полных:</div><input className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Неполных:</div><input className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Опекунов:</div><input className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Многодетные:</div><input className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Малообеспеченные:</div><input className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Отцы-одиночки:</div><input className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Матери-одиночки:</div><input className="ListPrText2" type="checkbox"></input></div>
 				</div>
 				<hr/>
-				<div><b>По материальному состоянию семей</b></div>
+				<div className="student-info-text"><b>По материальному состоянию семей</b></div>
 				<div className="OClNORMBlockIn">
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Низкий:</div><input id="reportFamilyMaterialConditionLow" className="ListPrText2" type="checkbox"></input></div>
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Средний:</div><input id="reportFamilyMaterialConditionMiddle" className="ListPrText2" type="checkbox"></input></div>
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Вполне благополучный:</div><input id="reportFamilyMaterialConditionMany" className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Низкий:</div><input className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Средний:</div><input className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Вполне благополучный:</div><input className="ListPrText2" type="checkbox"></input></div>
 				</div>
-				<hr/>
 			</div>
 			<div className="OClNORMBlock">
 				<div><b>По образовательному уровню родителей:</b></div>
 				<div className="OClNORMBlockIn">
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Высшее:</div><input id="reportFamilyEducationHigh" className="ListPrText2" type="checkbox"></input></div>
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Незаконченное высшее:</div><input id="reportFamilyEducationHighNoFull" className="ListPrText2" type="checkbox"></input></div>
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Средне-специальное:</div><input id="reportFamilyEducationMiddleSpecial" className="ListPrText2" type="checkbox"></input></div>
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Среднее:</div><input id="reportFamilyEducationMiddle" className="ListPrText2" type="checkbox"></input></div>
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Неполное среднее:</div><input id="reportFamilyEducationMiddleNoFull" className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Высшее:</div><input className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Незаконченное высшее:</div><input className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Средне-специальное:</div><input className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Среднее:</div><input className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Неполное среднее:</div><input className="ListPrText2" type="checkbox"></input></div>
 				</div>
 				<hr/>
 				<div><b>По занятости родителей:</b></div>
 				<div className="OClNORMBlockIn">
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Работник по найму:</div><input className="ListPrText2" type="checkbox"></input></div>
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Предпринимательская деятельность:</div><input className="ListPrText2" type="checkbox"></input></div>
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Безработный:</div><input className="ListPrText2" type="checkbox"></input></div>
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Декретный отпуск:</div><input className="ListPrText2" type="checkbox"></input></div>
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Инвалид:</div><input className="ListPrText2" type="checkbox"></input></div>
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Пенсионер:</div><input className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Работник по найму:</div><input className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Предпринимательская деятельность:</div><input className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Безработный:</div><input className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Декретный отпуск:</div><input className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Инвалид:</div><input className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Пенсионер:</div><input className="ListPrText2" type="checkbox"></input></div>
 				</div>
 				<hr/>
 				<div><b>По группам риска:</b></div>
 				<div className="OClNORMBlockIn">
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Девиантное поведение:</div><input className="ListPrText2" type="checkbox"></input></div>
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Неуспеваемость:</div><input className="ListPrText2" type="checkbox"></input></div>
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Иное:</div><input className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Девиантное поведение:</div><input className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Неуспеваемость:</div><input className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Иное:</div><input className="ListPrText2" type="checkbox"></input></div>
 				</div>
-				<hr/>
 			</div>
 		</div>
   );
@@ -949,22 +808,20 @@ export function OClNORM2() {
   return (
 		<div className="ONORMVIR">
 			<div className="OClNORMBlock">
-				<div><b>По учащимся, имеющим сертификат ПФДО</b></div>
+				<div className="student-info-text"><b>По учащимся, имеющим сертификат ПФДО</b></div>
 				<div className="OClNORMBlockIn">
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Пофамильно:</div><input id="opof" className="ListPrText2" type="checkbox"></input></div>
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Количественный:</div><input id="okol" className="ListPrText2" type="checkbox"></input></div>
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Процентный:</div><input id="opr" className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Пофамильно:</div><input id="opof" className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Количественный:</div><input id="okol" className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Процентный:</div><input id="opr" className="ListPrText2" type="checkbox"></input></div>
 				</div>
-				<hr/>
 			</div>
 			<div className="OClNORMBlock">
-				<div><b>По занятости учащихся:</b></div>
+				<div className="student-info-text"><b>По занятости учащихся:</b></div>
 				<div className="OClNORMBlockIn">
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Количественный по каждому учреждению:</div><input className="ListPrText2" type="checkbox"></input></div>
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Количественный по секциям каждого учреждения:</div><input className="ListPrText2" type="checkbox"></input></div>
-					<div className="OClNORMBlockInItem"><div className="OClNORMBlockInName">Количественный по секциям дополнительного образования школы:</div><input className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Количественный по каждому учреждению:</div><input className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Количественный по секциям каждого учреждения:</div><input className="ListPrText2" type="checkbox"></input></div>
+					<div className="report-bar"><div className="text-info">Количественный по секциям дополнительного образования школы:</div><input className="ListPrText2" type="checkbox"></input></div>
 				</div>
-				<hr/>
 			</div>
 		</div>
   );
@@ -1015,77 +872,8 @@ export function EventUserRole() {
   );
 }
 
-export function EventEditUser() {
-  return (
-	<div className="ListPr4">
-		<p className="text-info">Изменить ФИО:
-			<div>
-				<input id="name" type="text" placeholder="имя" className="login-input"/>
-				
-				<input id="middle_name" type="text" placeholder="отчество" className="login-input"/>
-				
-				<input id="last_name" type="text" placeholder="фамилия" className="login-input"/>
-			</div>
-		</p>
-		
-		<button id="container" className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){edituser();}}></img></button> 
-		
-		<p className="text-info">Изменить пароль:
-			<div>
-				<input id="pass" type="password" placeholder="новый пароль" className="login-input"/>
-			</div>
-		</p>
-		
-		<button id="container" className="profile-button"><img src="https://i.ibb.co/h2SfXRm/performed.png" className="profile-button2" onClick={function(){editpassuser();}}></img></button> 
-		
-	</div>
-  );
-}
 
-async function edituser() {
-	
-	let user = {
-		name: document.getElementById("name").value,//имя
-		lname: document.getElementById("last_name").value,// фамилия
-		mname: document.getElementById("middle_name").value,// отчетсво
-	};
 
-	let response = await fetch(user_edit, {
-	method: 'POST',// пока что пользуем методы POST и GET, далее может быть еще какие либо  методы будем использовать, особенно для админов
-	headers: {
-	Authorization: `Bearer ${localStorage.token}`,
-	'Content-Type': 'application/json;charset=utf-8'// стандартная строка которую менять не стоит в принципе если мы конечно не хотим здраво так упороться
-	},
-	body: JSON.stringify(user)
-	});
-	
-	let result = await response.json();// дада, вот этой и она тоже асинхронна
-										// в ней по идее должен быть  джейсон с токеном
-	if(response.status===200) { 
-		alert("Изменение успешно") }
-	else { alert(result.message);}
-}
-
-async function editpassuser() {
-	let user = {
-		password: document.getElementById("pass").value,//новый пароль
-	};
-
-	let response = await fetch(user_edit, {
-	method: 'POST',// пока что пользуем методы POST и GET, далее может быть еще какие либо  методы будем использовать, особенно для админов
-	headers: {
-	Authorization: `Bearer ${localStorage.token}`,
-	'Content-Type': 'application/json;charset=utf-8'// стандартная строка которую менять не стоит в принципе если мы конечно не хотим здраво так упороться
-	},
-	body: JSON.stringify(user)
-	});
-	
-	let result = await response.json();// дада, вот этой и она тоже асинхронна
-										// в ней по идее должен быть  джейсон с токеном
-	if(response.status===200) { 
-		alert("Изменение успешно") }
-	else { alert(result.message);}
-}
 
 export function ClassToUser() {
   return (

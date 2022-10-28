@@ -1,6 +1,6 @@
 import './ProjectCSS.css';
 
-import {TopPanel} from "./Panels.js";
+import {TopPanel} from "./components/ui/NavigationPanels/NavigationPanels.jsx";
 
 let port_reg_cl = "http://mavr.kemsu.ru:5500/API/class/";
 
@@ -59,6 +59,8 @@ export async function enternewcl2() {
 		},
 		});
 	let result = await response.json();
+	let result2 = JSON.stringify(result);
+	alert(result2);
 }
 
 export default Page;

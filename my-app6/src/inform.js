@@ -28,7 +28,7 @@ function inform () {
 					<div className="TextBox4"> 785735572 </div>
 					</div>
 				</div>
-			<a href="Clred"> 
+			<a href="src/components/ui/ClassroomLayouts/ClassroomEditStudent/ClassroomEditStudent.jsx">
 				<button className="TBVR"> Редактировать </button> 
 				</a>
 				</div>

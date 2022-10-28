@@ -1,6 +1,6 @@
 import './ProjectCSS.css';
 
-import {TopPanel} from "./Panels.js";
+import {TopPanel} from "./components/ui/NavigationPanels/NavigationPanels.jsx";
 
 function Page() {
 	return (
