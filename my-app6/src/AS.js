@@ -1,7 +1,7 @@
 import './ProjectCSS.css';
 import ReactDOM from 'react-dom';
 import './mavrCSS.css';
-
+//изменение ради изменения
 
 import {TopPanel, LeftPanelVR} from "./Panels.js";
 import {ArProf} from "./See.js";
