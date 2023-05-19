@@ -17,18 +17,18 @@ const element9 = <AdditionalEducation />;
 
 let flag = false;
 
-let port_reg_cl = "http://mavr.kemsu.ru:5500/API/class/";
-let port_find_students = "http://mavr.kemsu.ru:5500/API/student/:id";
-let port_find_fa = "http://mavr.kemsu.ru:5500/api/family/:id";
-let port_reg_fa = "http://mavr.kemsu.ru:5500/API/family/";
-let port_edit_fa = "http://mavr.kemsu.ru:5500/API/family/test";
-let port_edit_st = "http://mavr.kemsu.ru:5500/API/student/red";
-let port_delete_st = "http://mavr.kemsu.ru:5500/api/student/:id";
-let port_red_fa = "http://mavr.kemsu.ru:5500/API/family/redold";
-let port_show_students_dop = "http://mavr.kemsu.ru:5500/API/student/addeduc";
-let port_show_dop_organization = "http://mavr.kemsu.ru:5500/api/institution/id";
-let port_show_dop_directions = "http://mavr.kemsu.ru:5500/api/additEduc/getNAPR";
-let port_show_thisuser = "http://mavr.kemsu.ru:5500/API/user/whoami";
+let port_reg_cl = "http://localhost:5500/API/class/";
+let port_find_students = "http://localhost:5500/API/student/:id";
+let port_find_fa = "http://localhost:5500/api/family/:id";
+let port_reg_fa = "http://localhost:5500/API/family/";
+let port_edit_fa = "http://localhost:5500/API/family/test";
+let port_edit_st = "http://localhost:5500/API/student/red";
+let port_delete_st = "http://localhost:5500/api/student/:id";
+let port_red_fa = "http://localhost:5500/API/family/redold";
+let port_show_students_dop = "http://localhost:5500/API/student/addeduc";
+let port_show_dop_organization = "http://localhost:5500/api/institution/id";
+let port_show_dop_directions = "http://localhost:5500/api/additEduc/getNAPR";
+let port_show_thisuser = "http://localhost:5500/API/user/whoami";
 
 var classes=new Array();
 
@@ -111,7 +111,6 @@ async function enter(a, result) {
 			body: JSON.stringify(edit)
 			});
 		let resultedit = await responseedit.json();
-		let resultedit2 = JSON.stringify(resultedit.family_status);
 		//Заполнение полей семьи в профиле
 		switch(resultedit.family_status) {
 			case 0:
@@ -133,28 +132,28 @@ async function enter(a, result) {
 			document.getElementById("profileInfoimationAboutParents").innerHTML = "Информация о матери";
 			ReactDOM.render(element3, document.getElementById('profileInfoimationAboutFamily'));
 			document.getElementById("profileStudentEducationLeveGuardian").innerHTML = resultedit.educationMother;
-			document.getElementById("profileStudentWorkGuardian").innerHTML = resultedit.motherStat;
+			document.getElementById("createStudentWorkGuardian").innerHTML = resultedit.motherStat;
 			break;
 			case 3:
 			document.getElementById("profileFamilyCondition").innerHTML = "неполная";
 			document.getElementById("profileInfoimationAboutParents").innerHTML = "Информация об отце";
 			ReactDOM.render(element3, document.getElementById('profileInfoimationAboutFamily'));
 			document.getElementById("profileStudentEducationLeveGuardian").innerHTML = resultedit.educationFather;
-			document.getElementById("profileStudentWorkGuardian").innerHTML = resultedit.fatherStat;		
+			document.getElementById("createStudentWorkGuardian").innerHTML = resultedit.fatherStat;		
 			break;
 			case 4:
 			document.getElementById("profileFamilyCondition").innerHTML = "опекун";
 			document.getElementById("profileInfoimationAboutParents").innerHTML = "Информация об опекуне";
 			ReactDOM.render(element3, document.getElementById('profileInfoimationAboutFamily'));
 			document.getElementById("profileStudentEducationLeveGuardian").innerHTML = resultedit.educationMother;
-			document.getElementById("profileStudentWorkGuardian").innerHTML = resultedit.motherStat;
+			document.getElementById("createStudentWorkGuardian").innerHTML = resultedit.motherStat;
 			break;
 			case 5:
 			document.getElementById("profileFamilyCondition").innerHTML = "опекун";
 			document.getElementById("profileInfoimationAboutParents").innerHTML = "Информация об опекуне";
 			ReactDOM.render(element3, document.getElementById('profileInfoimationAboutFamily'));
 			document.getElementById("profileStudentEducationLeveGuardian").innerHTML = resultedit.educationFather;
-			document.getElementById("profileStudentWorkGuardian").innerHTML = resultedit.fatherStat;
+			document.getElementById("createStudentWorkGuardian").innerHTML = resultedit.fatherStat;
 			break;
 		}
 		document.getElementById("profileFamilysMoney").innerHTML = resultedit.material_condition;
@@ -309,6 +308,7 @@ async function enter4(a) {
 	document.getElementById(a.id).style.background = "#8ccba1";
 }
 
+
 async function enter5() {
 	document.getElementById('SetSP').style.display = "none";
 }
@@ -411,6 +411,8 @@ async function enter8(a) {
 		break;
 	}
 }
+
+
 //Редактирование семьи ученика
 export async function enter10(a) {
 	switch(a) {
@@ -428,6 +430,7 @@ export async function enter10(a) {
 		break;
 	}
 }
+
 
 //Редактирование ученика ввод полная семья
 export async function enter13(stid, name2, fullname2, class_ID2, sex2, birthday2, group_of_risk2, PFDO2, family_id2, family_status2, material_condition2, educationMother2, educationFather2, createStudentWorkMother2, createStudentWorkFather2) {

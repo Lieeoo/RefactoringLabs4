@@ -216,7 +216,7 @@ class StudentController {
                     classes= await Student.findAll({where: {family_id},limit,ofset})
 
                 }
-                    else if(class_ID && family_id){
+                    else if(class_ID && family_idЁ){
                         classes= await Student.findAll({where: {family_id, class_ID},limit,ofset})
 
                     }

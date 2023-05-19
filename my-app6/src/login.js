@@ -2,7 +2,8 @@ import './mavrCSS.css';
 
 import logo from './images/icon.png'; 
 
-let port_log = "http://mavr.kemsu.ru:5500/API/user/login";
+//let port_log = "http://mavr.kemsu.ru:5500/API/user/login";
+let port_log = "http://localhost:5500/API/user/login";
 
 //let profile="http://mavr.kemsu.ru/profile";
 let profile = "http://localhost:3000/profile";

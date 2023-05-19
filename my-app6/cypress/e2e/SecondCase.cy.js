@@ -1,6 +1,6 @@
 describe('Second Case', () => {
   it('Visit site and log in', () => {
-    cy.visit('http://mavr.kemsu.ru/')
+    cy.visit('http://localhost:3000/')
     cy.wait(1000)
     cy.get('[id="login1"]').type('ADMIN').should('have.value', 'ADMIN')
     cy.wait(1000)
@@ -10,7 +10,7 @@ describe('Second Case', () => {
     cy.wait(1000)
   })
   it('Create new profile', () => {
-    cy.visit('http://mavr.kemsu.ru/control_users')
+    cy.visit('http://localhost:3000/control_users')
     cy.wait(1000)
     Cypress.on('uncaught:exception', (err, runnable) => {
       return false

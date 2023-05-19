@@ -1,6 +1,6 @@
 describe('First Case', () => {
   it('Visit site and log i', () => {
-    cy.visit('http://mavr.kemsu.ru/')
+    cy.visit('http://localhost:3000/')
     cy.wait(1000)
     cy.get('[id="login1"]').type('ADMIN').should('have.value', 'ADMIN')
     cy.wait(1000)
