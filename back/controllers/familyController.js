@@ -68,21 +68,17 @@ class familyController {
 
 
 
-    async getChilds(req,res,next) 
-    {let {family_id,}= req.body
-
-     let childs;
-    if(family_id ){
-                childs= await Student.findAndCountAll({where: {family_id}})
-
-                 }
-             
-                 else {
-                     return next(ApiError.badrequest('поле семьи пустое'))
-
-                 }
-                 return res.json(childs)
- }
+    async getChilds(req,res,next) {
+        let {family_id,}= req.body
+        let childs;
+        if(family_id ){
+            childs= await Student.findAndCountAll({where: {family_id}})
+        }
+        else {
+            return next(ApiError.badrequest('поле семьи пустое'))
+        }
+        return res.json(childs)
+    }
 
  async deletePusto(req,res,next) 
     {let id, family_id;
