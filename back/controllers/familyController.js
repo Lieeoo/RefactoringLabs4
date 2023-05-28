@@ -23,26 +23,26 @@ class familyController {
         
     }
 
-    async famred2(req,res,next)
-    {const {id,family_status,material_condition,educationMother,educationFather,fatherStat,motherStat }= req.body
+    async familyOfStudentEdit(requestFamily,responceFamily,familyController) 
+    {const {id,familyStatus,materialCondition,educationMother,educationFather,statusFather,statusMother }= requestFamily.body
     if(!id){
-        return next(ApiError.badrequest('отсутствует айди'))
+        return familyController(ApiError.badrequest('отсутствует айди'))
     }
-    let candidate = await Family.findOne({where:{id}})
-    family_status=family_status ||candidate.family_status
-    material_condition=material_condition||   candidate.material_condition
-    educationMother=educationMother|| candidate.educationMother
-    educationFather=educationFather|| candidate.educationFather
-    fatherStat=fatherStat||candidate.fatherStat
-    motherStat=motherStat||candidate.motherStat
+    let familyOfThisStudent = await Family.findOne({where:{id}})
+    familyStatus=familyStatus ||familyOfThisStudent.familyStatus
+    materialCondition=materialCondition||   familyOfThisStudent.materialCondition
+    educationMother=educationMother|| familyOfThisStudent.educationMother
+    educationFather=educationFather|| familyOfThisStudent.educationFather
+    statusFather=statusFather||familyOfThisStudent.statusFather
+    statusMother=statusMother||familyOfThisStudent.statusMother
     
-    if(!candidate) return next(ApiError.badrequest('событие не найдено'))
-    await Family.update({family_status,material_condition,educationMother,educationFather,fatherStat,motherStat},
+    if(!familyOfThisStudent) return familyController(ApiError.badrequest('событие не найдено'))
+    await Family.update({familyStatus,materialCondition,educationMother,educationFather,statusFather,statusMother},
       {
         where: {id}
       });
-        let candidate1 = await Event.findOne({where:{id}})     
-        return res.json(candidate1)
+        let showFamily = await Event.findOne({where:{id}})     
+        return responceFamily.json(showFamily)
     }
 
 
