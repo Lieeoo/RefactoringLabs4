@@ -17,18 +17,19 @@ const element9 = <AdditionalEducation />;
 
 let flag = false;
 
-let port_reg_cl = "http://localhost:5500/API/class/";
-let port_find_students = "http://localhost:5500/API/student/:id";
-let port_find_fa = "http://localhost:5500/api/family/:id";
-let port_reg_fa = "http://localhost:5500/API/family/";
-let port_edit_fa = "http://localhost:5500/API/family/test";
-let port_edit_st = "http://localhost:5500/API/student/red";
-let port_delete_st = "http://localhost:5500/api/student/:id";
-let port_red_fa = "http://localhost:5500/API/family/redold";
-let port_show_students_dop = "http://localhost:5500/API/student/addeduc";
-let port_show_dop_organization = "http://localhost:5500/api/institution/id";
-let port_show_dop_directions = "http://localhost:5500/api/additEduc/getNAPR";
-let port_show_thisuser = "http://localhost:5500/API/user/whoami";
+let addressForFetches = "http://localhost:5500";
+let port_reg_cl = addressForFetches + "/API/class/";
+let port_find_students = addressForFetches + "/API/student/:id";
+let port_find_fa = addressForFetches + "/api/family/:id";
+let port_reg_fa = addressForFetches + "/API/family/";
+let port_edit_fa = addressForFetches + "/API/family/test";
+let port_edit_st = addressForFetches + "/API/student/red";
+let port_delete_st = addressForFetches + "/api/student/:id";
+let port_red_fa = addressForFetches + "/API/family/redold";
+let port_show_students_dop = addressForFetches + "/API/student/addeduc";
+let port_show_dop_organization = addressForFetches + "/api/institution/id";
+let port_show_dop_directions = addressForFetches + "/api/additEduc/getNAPR";
+let port_show_thisuser = addressForFetches + "/API/user/whoami";
 
 var classes=new Array();
 
