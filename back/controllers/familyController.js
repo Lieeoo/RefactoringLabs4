@@ -69,10 +69,7 @@ class familyController {
 
 
     async getChilds(req,res,next) 
-    {let {family_id, /*limit,page*/}= req.body
-    /* page = page || 1
-     limit = limit || 30
-     let ofset =(page-1)*limit/** */
+    {let {family_id,}= req.body
 
      let childs;
     if(family_id ){
