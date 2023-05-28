@@ -111,51 +111,48 @@ async function enter(a, result) {
 			body: JSON.stringify(edit)
 			});
 		let resultedit = await responseedit.json();
-		let resultedit2 = JSON.stringify(resultedit.family_status);
-		//Заполнение полей семьи в профиле
-		switch(resultedit.family_status) {
-			case 0:
-			document.getElementById("profileFamilyCondition").innerHTML = "нет";
-			document.getElementById("profileInfoimationAboutParents").innerHTML = "";
-			ReactDOM.render("", document.getElementById('profileInfoimationAboutFamily'));
-			break;
-			case 1:
-			document.getElementById("profileFamilyCondition").innerHTML = "полная";
-			document.getElementById("profileInfoimationAboutParents").innerHTML = "Информация о родителях";
-			ReactDOM.render(element2, document.getElementById('profileInfoimationAboutFamily'));
-			document.getElementById("profileStudentEducationLeveMother").innerHTML = resultedit.educationMother;
-			document.getElementById("profileStudentWorkMother").innerHTML = resultedit.motherStat;
-			document.getElementById("profileStudentEducationLeveFather").innerHTML = resultedit.educationFather;
-			document.getElementById("profileStudentWorkFather").innerHTML = resultedit.fatherStat;
-			break;
-			case 2:
-			document.getElementById("profileFamilyCondition").innerHTML = "неполная";
+		async function drawGuardianOrNotFullFamilyMother (familyCondition){
+			document.getElementById("profileFamilyCondition").innerHTML = familyCondition;
 			document.getElementById("profileInfoimationAboutParents").innerHTML = "Информация о матери";
 			ReactDOM.render(element3, document.getElementById('profileInfoimationAboutFamily'));
 			document.getElementById("profileStudentEducationLeveGuardian").innerHTML = resultedit.educationMother;
-			document.getElementById("profileStudentWorkGuardian").innerHTML = resultedit.motherStat;
-			break;
-			case 3:
-			document.getElementById("profileFamilyCondition").innerHTML = "неполная";
+			document.getElementById("createStudentWorkGuardian").innerHTML = resultedit.motherStat;
+		}
+		async function drawGuardianOrNotFullFamilyFather (familyCondition){
+			document.getElementById("profileFamilyCondition").innerHTML = familyCondition;
 			document.getElementById("profileInfoimationAboutParents").innerHTML = "Информация об отце";
 			ReactDOM.render(element3, document.getElementById('profileInfoimationAboutFamily'));
 			document.getElementById("profileStudentEducationLeveGuardian").innerHTML = resultedit.educationFather;
-			document.getElementById("profileStudentWorkGuardian").innerHTML = resultedit.fatherStat;		
+			document.getElementById("createStudentWorkGuardian").innerHTML = resultedit.fatherStat;
+		}
+		//Заполнение полей семьи в профиле
+		switch(resultedit.family_status) {
+			case 0:
+				document.getElementById("profileFamilyCondition").innerHTML = "нет";
+				document.getElementById("profileInfoimationAboutParents").innerHTML = "";
+				ReactDOM.render("", document.getElementById('profileInfoimationAboutFamily'));
+				break;
+			case 1:
+				document.getElementById("profileFamilyCondition").innerHTML = "полная";
+				document.getElementById("profileInfoimationAboutParents").innerHTML = "Информация о родителях";
+				ReactDOM.render(element2, document.getElementById('profileInfoimationAboutFamily'));
+				document.getElementById("profileStudentEducationLeveMother").innerHTML = resultedit.educationMother;
+				document.getElementById("profileStudentWorkMother").innerHTML = resultedit.motherStat;
+				document.getElementById("profileStudentEducationLeveFather").innerHTML = resultedit.educationFather;
+				document.getElementById("profileStudentWorkFather").innerHTML = resultedit.fatherStat;
+				break;
+			case 2:
+				drawGuardianOrNotFullFamilyMother ("неполная");
 			break;
+			case 3:
+				drawGuardianOrNotFullFamilyFather ("неполная");
+				break;
 			case 4:
-			document.getElementById("profileFamilyCondition").innerHTML = "опекун";
-			document.getElementById("profileInfoimationAboutParents").innerHTML = "Информация об опекуне";
-			ReactDOM.render(element3, document.getElementById('profileInfoimationAboutFamily'));
-			document.getElementById("profileStudentEducationLeveGuardian").innerHTML = resultedit.educationMother;
-			document.getElementById("profileStudentWorkGuardian").innerHTML = resultedit.motherStat;
-			break;
+				drawGuardianOrNotFullFamilyMother ("опекун");
+				break;
 			case 5:
-			document.getElementById("profileFamilyCondition").innerHTML = "опекун";
-			document.getElementById("profileInfoimationAboutParents").innerHTML = "Информация об опекуне";
-			ReactDOM.render(element3, document.getElementById('profileInfoimationAboutFamily'));
-			document.getElementById("profileStudentEducationLeveGuardian").innerHTML = resultedit.educationFather;
-			document.getElementById("profileStudentWorkGuardian").innerHTML = resultedit.fatherStat;
-			break;
+				drawGuardianOrNotFullFamilyFather ("опекун");
+				break;
 		}
 		document.getElementById("profileFamilysMoney").innerHTML = resultedit.material_condition;
 		//Вывод допобразований ученика
