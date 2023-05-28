@@ -258,7 +258,7 @@ async function enter2(classes) {
 		p.id=resultgetclassesofuser[i].id+"cl";
 		let txt = document.createTextNode(result2)
 		p.appendChild(txt);
-		p.onclick = function() {enter4(this);};
+		p.onclick = function() {showStudentsOfThisClass(this);};
 		document.getElementById('ClList').appendChild(p);
 		classes.push(resultgetclassesofuser[i].id);
 		i++;
@@ -268,25 +268,39 @@ async function enter2(classes) {
 async function enter3() {
 	alert(classes);
 }
+
 //Вывод учеников класса
-async function enter4(a) {
+async function showStudentsOfThisClass(a) {
+	drawFieldForStudents();
+	drawEveryStudent(getAllStudents());
+	addStyleToClickedStudents();
+}
+
+async function drawFieldForStudents(){
 	ReactDOM.render(null, document.getElementById('SetSP'));
 	if(document.getElementById('Students').innerHTML.trim().length != 0) {
 		const deleteElement = document.querySelector("#Students");
 		deleteElement.innerHTML = '';
 	}
+}
+
+async function getAllStudents(){
 	let student = {
-			class_ID:a.value,
-		};
+		class_ID:a.value,
+	};
 	let response = await fetch(port_find_students, {
 		method: 'POST',
 		headers: {
-		Authorization: `Bearer ${localStorage.token}` ,
-		'Content-Type': 'application/json;charset=utf-8'
+			Authorization: `Bearer ${localStorage.token}` ,
+			'Content-Type': 'application/json;charset=utf-8'
 		},
 		body: JSON.stringify(student)
-		});
+	});
 	let result = await response.json();
+	return result
+}
+
+async function drawEveryStudent(result){
 	let i=0;
 	while(i<result.length){
 		let result2 = JSON.stringify(i+1 + ". " + result[i].fullname);
@@ -294,17 +308,22 @@ async function enter4(a) {
 		let p = document.createElement('div')
 		p.className = 'TextStyleN';
 		p.id=result[i].id+"st";
-		p.onclick = function() {enter(this, result);};
-		let txt = document.createTextNode(result3)
+		p.onclick = function() {
+			enter(this, result);
+			};
+		let txt = document.createTextNode(result3);
 		p.appendChild(txt);
 		document.getElementById('Students').appendChild(p);
-		i++;
+	i++;
 	}
+}
+
+async function addStyleToClickedStudents(){
 	let j=0;
 	while(j<classes.length){
 		var divv=((classes[j])+"cl");
 		document.getElementById(divv).style.background = '#bcf3bd';
-		j++;		
+		j++;
 	}
 	document.getElementById(a.id).style.background = "#8ccba1";
 }
