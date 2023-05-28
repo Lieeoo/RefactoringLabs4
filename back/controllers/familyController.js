@@ -23,53 +23,6 @@ class familyController {
         
     }
 
-
-
-    async famred(req,res,next)//устарел
-    {const {id,family_status,material_condition,educationMother,educationFather,fatherStat,motherStat }= req.body
-    if(!id){
-        return next(ApiError.badrequest('отсутствует айди'))
-    }
-    let candidate = await Family.findOne({where:{id}})
-
-
-        if(candidate){
-            if (family_status)
-            await Family.update({ family_status/*,lname: lname,mname: mname,comm: comm */}, {
-                where: {id}
-              });
-            if (material_condition)
-              await Family.update({ material_condition/*,lname: lname,mname: mname,comm: comm */}, {
-                  where: {id}
-                });
-                if (educationMother)
-                await Family.update({ educationMother/*,lname: lname,mname: mname,comm: comm */}, {
-                    where: {id}
-                  });
-                  if (educationFather)
-                await Family.update({ educationFather/*,lname: lname,mname: mname,comm: comm */}, {
-                    where: {id}
-                  });
-                  if (fatherStat)
-                  await Family.update({ fatherStat/*,lname: lname,mname: mname,comm: comm */}, {
-                      where: {id}
-                    });
-                    if (motherStat)
-                    await Family.update({ motherStat/*,lname: lname,mname: mname,comm: comm */}, {
-                        where: {id}
-                      }); 
-                        
-
-         candidate = await Family.findOne({where:{id}})     
-        return res.status(200).json(candidate)
-        }
-        else
-        {
-           return next(ApiError.badrequest('некорректный айди'))
-        }
-
-    }
-
     async famred2(req,res,next)
     {const {id,family_status,material_condition,educationMother,educationFather,fatherStat,motherStat }= req.body
     if(!id){
