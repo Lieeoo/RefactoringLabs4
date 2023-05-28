@@ -23,26 +23,73 @@ class familyController {
         
     }
 
-    async familyOfStudentEdit(requestFamily,responceFamily,familyController) 
-    {const {id,familyStatus,materialCondition,educationMother,educationFather,statusFather,statusMother }= requestFamily.body
+
+
+    async famred(req,res,next)//устарел
+    {const {id,family_status,material_condition,educationMother,educationFather,fatherStat,motherStat }= req.body
     if(!id){
-        return familyController(ApiError.badrequest('отсутствует айди'))
+        return next(ApiError.badrequest('отсутствует айди'))
     }
-    let familyOfThisStudent = await Family.findOne({where:{id}})
-    familyStatus=familyStatus ||familyOfThisStudent.familyStatus
-    materialCondition=materialCondition||   familyOfThisStudent.materialCondition
-    educationMother=educationMother|| familyOfThisStudent.educationMother
-    educationFather=educationFather|| familyOfThisStudent.educationFather
-    statusFather=statusFather||familyOfThisStudent.statusFather
-    statusMother=statusMother||familyOfThisStudent.statusMother
+    let candidate = await Family.findOne({where:{id}})
+
+
+        if(candidate){
+            if (family_status)
+            await Family.update({ family_status/*,lname: lname,mname: mname,comm: comm */}, {
+                where: {id}
+              });
+            if (material_condition)
+              await Family.update({ material_condition/*,lname: lname,mname: mname,comm: comm */}, {
+                  where: {id}
+                });
+                if (educationMother)
+                await Family.update({ educationMother/*,lname: lname,mname: mname,comm: comm */}, {
+                    where: {id}
+                  });
+                  if (educationFather)
+                await Family.update({ educationFather/*,lname: lname,mname: mname,comm: comm */}, {
+                    where: {id}
+                  });
+                  if (fatherStat)
+                  await Family.update({ fatherStat/*,lname: lname,mname: mname,comm: comm */}, {
+                      where: {id}
+                    });
+                    if (motherStat)
+                    await Family.update({ motherStat/*,lname: lname,mname: mname,comm: comm */}, {
+                        where: {id}
+                      }); 
+                        
+
+         candidate = await Family.findOne({where:{id}})     
+        return res.status(200).json(candidate)
+        }
+        else
+        {
+           return next(ApiError.badrequest('некорректный айди'))
+        }
+
+    }
+
+    async famred2(req,res,next)
+    {const {id,family_status,material_condition,educationMother,educationFather,fatherStat,motherStat }= req.body
+    if(!id){
+        return next(ApiError.badrequest('отсутствует айди'))
+    }
+    let candidate = await Family.findOne({where:{id}})
+    family_status=family_status ||candidate.family_status
+    material_condition=material_condition||   candidate.material_condition
+    educationMother=educationMother|| candidate.educationMother
+    educationFather=educationFather|| candidate.educationFather
+    fatherStat=fatherStat||candidate.fatherStat
+    motherStat=motherStat||candidate.motherStat
     
-    if(!familyOfThisStudent) return familyController(ApiError.badrequest('событие не найдено'))
-    await Family.update({familyStatus,materialCondition,educationMother,educationFather,statusFather,statusMother},
+    if(!candidate) return next(ApiError.badrequest('событие не найдено'))
+    await Family.update({family_status,material_condition,educationMother,educationFather,fatherStat,motherStat},
       {
         where: {id}
       });
-        let showFamily = await Event.findOne({where:{id}})     
-        return responceFamily.json(showFamily)
+        let candidate1 = await Event.findOne({where:{id}})     
+        return res.json(candidate1)
     }
 
 
@@ -68,19 +115,26 @@ class familyController {
 
 
 
-    async getChilds(req,res,next) {
-        let {family_id}= req.body;
-        let childs;
-        if(family_id ){
-            childs= await Student.findAndCountAll({where: {family_id}})
-        }
-        else {
-            return next(ApiError.badrequest('поле семьи пустое'))
-        }
-        return res.json(childs)
-    }
+    async getChilds(req,res,next) 
+    {let {family_id, /*limit,page*/}= req.body
+    /* page = page || 1
+     limit = limit || 30
+     let ofset =(page-1)*limit/** */
 
-    async deletePusto(req,res,next) 
+     let childs;
+    if(family_id ){
+                childs= await Student.findAndCountAll({where: {family_id}})
+
+                 }
+             
+                 else {
+                     return next(ApiError.badrequest('поле семьи пустое'))
+
+                 }
+                 return res.json(childs)
+ }
+
+ async deletePusto(req,res,next) 
     {let id, family_id;
         let stud;
        let fam = Family.max({id})

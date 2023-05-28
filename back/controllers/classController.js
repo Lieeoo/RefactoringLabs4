@@ -26,9 +26,9 @@ class ClassController {
     }
 
 
-    async getMyClasses(req,res,next)
+    async getMyClasses(req,res,next) //отличная тема для гет запроса
     { try{
-        const token = req.headers.authorization.split(' ')[1]
+        const token = req.headers.authorization.split(' ')[1] // Bearer asfasnfkajsfnjk
         if (!token) {
             return res.status(401).json({message: "Не авторизован"})
         }
