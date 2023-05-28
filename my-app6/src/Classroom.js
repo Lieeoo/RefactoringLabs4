@@ -17,18 +17,19 @@ const element9 = <AdditionalEducation />;
 
 let flag = false;
 
-let port_reg_cl = "http://localhost:5500/API/class/";
-let port_find_students = "http://localhost:5500/API/student/:id";
-let port_find_fa = "http://localhost:5500/api/family/:id";
-let port_reg_fa = "http://localhost:5500/API/family/";
-let port_edit_fa = "http://localhost:5500/API/family/test";
-let port_edit_st = "http://localhost:5500/API/student/red";
-let port_delete_st = "http://localhost:5500/api/student/:id";
-let port_red_fa = "http://localhost:5500/API/family/redold";
-let port_show_students_dop = "http://localhost:5500/API/student/addeduc";
-let port_show_dop_organization = "http://localhost:5500/api/institution/id";
-let port_show_dop_directions = "http://localhost:5500/api/additEduc/getNAPR";
-let port_show_thisuser = "http://localhost:5500/API/user/whoami";
+let addressForFetches = "http://localhost:5500";
+let port_reg_cl = addressForFetches + "/API/class/";
+let port_find_students = addressForFetches + "/API/student/:id";
+let port_find_fa = addressForFetches + "/api/family/:id";
+let port_reg_fa = addressForFetches + "/API/family/";
+let port_edit_fa = addressForFetches + "/API/family/test";
+let port_edit_st = addressForFetches + "/API/student/red";
+let port_delete_st = addressForFetches + "/api/student/:id";
+let port_red_fa = addressForFetches + "/API/family/redold";
+let port_show_students_dop = addressForFetches + "/student/addeduc";
+let port_show_dop_organization = addressForFetches + "/api/institution/id";
+let port_show_dop_directions = addressForFetches + "/api/additEduc/getNAPR";
+let port_show_thisuser = addressForFetches + "/API/user/whoami";
 
 var classes=new Array();
 
@@ -111,51 +112,48 @@ async function enter(a, result) {
 			body: JSON.stringify(edit)
 			});
 		let resultedit = await responseedit.json();
-		let resultedit2 = JSON.stringify(resultedit.family_status);
-		//Заполнение полей семьи в профиле
-		switch(resultedit.family_status) {
-			case 0:
-			document.getElementById("profileFamilyCondition").innerHTML = "нет";
-			document.getElementById("profileInfoimationAboutParents").innerHTML = "";
-			ReactDOM.render("", document.getElementById('profileInfoimationAboutFamily'));
-			break;
-			case 1:
-			document.getElementById("profileFamilyCondition").innerHTML = "полная";
-			document.getElementById("profileInfoimationAboutParents").innerHTML = "Информация о родителях";
-			ReactDOM.render(element2, document.getElementById('profileInfoimationAboutFamily'));
-			document.getElementById("profileStudentEducationLeveMother").innerHTML = resultedit.educationMother;
-			document.getElementById("profileStudentWorkMother").innerHTML = resultedit.motherStat;
-			document.getElementById("profileStudentEducationLeveFather").innerHTML = resultedit.educationFather;
-			document.getElementById("profileStudentWorkFather").innerHTML = resultedit.fatherStat;
-			break;
-			case 2:
-			document.getElementById("profileFamilyCondition").innerHTML = "неполная";
+		async function drawGuardianOrNotFullFamilyMother (familyCondition){
+			document.getElementById("profileFamilyCondition").innerHTML = familyCondition;
 			document.getElementById("profileInfoimationAboutParents").innerHTML = "Информация о матери";
 			ReactDOM.render(element3, document.getElementById('profileInfoimationAboutFamily'));
 			document.getElementById("profileStudentEducationLeveGuardian").innerHTML = resultedit.educationMother;
-			document.getElementById("profileStudentWorkGuardian").innerHTML = resultedit.motherStat;
-			break;
-			case 3:
-			document.getElementById("profileFamilyCondition").innerHTML = "неполная";
+			document.getElementById("createStudentWorkGuardian").innerHTML = resultedit.motherStat;
+		}
+		async function drawGuardianOrNotFullFamilyFather (familyCondition){
+			document.getElementById("profileFamilyCondition").innerHTML = familyCondition;
 			document.getElementById("profileInfoimationAboutParents").innerHTML = "Информация об отце";
 			ReactDOM.render(element3, document.getElementById('profileInfoimationAboutFamily'));
 			document.getElementById("profileStudentEducationLeveGuardian").innerHTML = resultedit.educationFather;
-			document.getElementById("profileStudentWorkGuardian").innerHTML = resultedit.fatherStat;		
+			document.getElementById("createStudentWorkGuardian").innerHTML = resultedit.fatherStat;
+		}
+		//Заполнение полей семьи в профиле
+		switch(resultedit.family_status) {
+			case 0:
+				document.getElementById("profileFamilyCondition").innerHTML = "нет";
+				document.getElementById("profileInfoimationAboutParents").innerHTML = "";
+				ReactDOM.render("", document.getElementById('profileInfoimationAboutFamily'));
+				break;
+			case 1:
+				document.getElementById("profileFamilyCondition").innerHTML = "полная";
+				document.getElementById("profileInfoimationAboutParents").innerHTML = "Информация о родителях";
+				ReactDOM.render(element2, document.getElementById('profileInfoimationAboutFamily'));
+				document.getElementById("profileStudentEducationLeveMother").innerHTML = resultedit.educationMother;
+				document.getElementById("profileStudentWorkMother").innerHTML = resultedit.motherStat;
+				document.getElementById("profileStudentEducationLeveFather").innerHTML = resultedit.educationFather;
+				document.getElementById("profileStudentWorkFather").innerHTML = resultedit.fatherStat;
+				break;
+			case 2:
+				drawGuardianOrNotFullFamilyMother ("неполная");
 			break;
+			case 3:
+				drawGuardianOrNotFullFamilyFather ("неполная");
+				break;
 			case 4:
-			document.getElementById("profileFamilyCondition").innerHTML = "опекун";
-			document.getElementById("profileInfoimationAboutParents").innerHTML = "Информация об опекуне";
-			ReactDOM.render(element3, document.getElementById('profileInfoimationAboutFamily'));
-			document.getElementById("profileStudentEducationLeveGuardian").innerHTML = resultedit.educationMother;
-			document.getElementById("profileStudentWorkGuardian").innerHTML = resultedit.motherStat;
-			break;
+				drawGuardianOrNotFullFamilyMother ("опекун");
+				break;
 			case 5:
-			document.getElementById("profileFamilyCondition").innerHTML = "опекун";
-			document.getElementById("profileInfoimationAboutParents").innerHTML = "Информация об опекуне";
-			ReactDOM.render(element3, document.getElementById('profileInfoimationAboutFamily'));
-			document.getElementById("profileStudentEducationLeveGuardian").innerHTML = resultedit.educationFather;
-			document.getElementById("profileStudentWorkGuardian").innerHTML = resultedit.fatherStat;
-			break;
+				drawGuardianOrNotFullFamilyFather ("опекун");
+				break;
 		}
 		document.getElementById("profileFamilysMoney").innerHTML = resultedit.material_condition;
 		//Вывод допобразований ученика
@@ -258,7 +256,7 @@ async function enter2(classes) {
 		p.id=resultgetclassesofuser[i].id+"cl";
 		let txt = document.createTextNode(result2)
 		p.appendChild(txt);
-		p.onclick = function() {enter4(this);};
+		p.onclick = function() {showStudentsOfThisClass(this);};
 		document.getElementById('ClList').appendChild(p);
 		classes.push(resultgetclassesofuser[i].id);
 		i++;
@@ -268,25 +266,39 @@ async function enter2(classes) {
 async function enter3() {
 	alert(classes);
 }
+
 //Вывод учеников класса
-async function enter4(a) {
+async function showStudentsOfThisClass(a) {
+	drawFieldForStudents();
+	drawEveryStudent(getAllStudents());
+	addStyleToClickedStudents();
+}
+
+async function drawFieldForStudents(){
 	ReactDOM.render(null, document.getElementById('SetSP'));
 	if(document.getElementById('Students').innerHTML.trim().length != 0) {
 		const deleteElement = document.querySelector("#Students");
 		deleteElement.innerHTML = '';
 	}
+}
+
+async function getAllStudents(){
 	let student = {
-			class_ID:a.value,
-		};
+		class_ID:a.value,
+	};
 	let response = await fetch(port_find_students, {
 		method: 'POST',
 		headers: {
-		Authorization: `Bearer ${localStorage.token}` ,
-		'Content-Type': 'application/json;charset=utf-8'
+			Authorization: `Bearer ${localStorage.token}` ,
+			'Content-Type': 'application/json;charset=utf-8'
 		},
 		body: JSON.stringify(student)
-		});
+	});
 	let result = await response.json();
+	return result
+}
+
+async function drawEveryStudent(result){
 	let i=0;
 	while(i<result.length){
 		let result2 = JSON.stringify(i+1 + ". " + result[i].fullname);
@@ -294,17 +306,22 @@ async function enter4(a) {
 		let p = document.createElement('div')
 		p.className = 'TextStyleN';
 		p.id=result[i].id+"st";
-		p.onclick = function() {enter(this, result);};
-		let txt = document.createTextNode(result3)
+		p.onclick = function() {
+			enter(this, result);
+			};
+		let txt = document.createTextNode(result3);
 		p.appendChild(txt);
 		document.getElementById('Students').appendChild(p);
-		i++;
+	i++;
 	}
+}
+
+async function addStyleToClickedStudents(){
 	let j=0;
 	while(j<classes.length){
 		var divv=((classes[j])+"cl");
 		document.getElementById(divv).style.background = '#bcf3bd';
-		j++;		
+		j++;
 	}
 	document.getElementById(a.id).style.background = "#8ccba1";
 }
